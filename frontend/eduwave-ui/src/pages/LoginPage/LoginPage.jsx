@@ -23,6 +23,7 @@ const LoginPage = () => {
       // Handle successful login, e.g., store token in local storage
       localStorage.setItem('token', data.token);
       localStorage.setItem('userid', data.userid);
+      localStorage.setItem('username', data.username);
       
       // Redirect or do something else upon successful login
       window.location.href = '/enroll';
