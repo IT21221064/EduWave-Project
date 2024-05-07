@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Navbar from '../../components/navbar/Navbar';
 
 const EnrollPage = () => {
   // Dummy course list
@@ -23,7 +24,8 @@ const EnrollPage = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
+      <Navbar />
       <h1>Enroll Page</h1>
       <h2>Course List</h2>
       <ul>
