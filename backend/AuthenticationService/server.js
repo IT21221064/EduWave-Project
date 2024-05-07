@@ -7,12 +7,14 @@ const AdminRoutes = require('./routes/AdminRoute');
 const TutorRoutes = require('./routes/TutorRoute');
 const LearnerRoutes = require('./routes/LearnerRoute');
 const connectDB = require("./config/DB");
+const cors = require("cors");
 
 const PORT = process.env.PORT;
 //express app
 const app = express(); //invokes the function
 connectDB();
 //middleware
+app.use(cors());
 app.use(express.json()); //if the request has a body or data then it passes and attaches to req object
 
 app.use((req, res, next) => {
