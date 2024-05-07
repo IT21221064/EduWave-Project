@@ -24,25 +24,48 @@ const paymentSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["pending", "completed", "failed"],
     default: "pending",
   },
   timestamp: {
     type: Date,
     default: Date.now,
-    required: true,
   },
   courseID: {
     type: String,
-    required: false,
   },
   transactionID: {
     type: String,
-    required: false,
   },
   additionalDetails: {
     type: String,
-    required: false,
+  },
+  billingFirstName: {
+    type: String,
+    required: true,
+  },
+  billingLastName: {
+    type: String,
+    required: true,
+  },
+  billingPhone: {
+    type: String,
+    required: true,
+  },
+  billingEmail: {
+    type: String,
+    required: true,
+  },
+  billingAddress: {
+    type: String,
+    required: true,
+  },
+  billingCity: {
+    type: String,
+    required: true,
+  },
+  billingCountry: {
+    type: String,
+    required: true,
   },
   createdAt: {
     type: Date,
