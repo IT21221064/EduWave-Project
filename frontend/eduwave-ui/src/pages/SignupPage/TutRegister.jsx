@@ -3,7 +3,7 @@ import React from 'react';
 const SignupPage = () => {
     
   return (
-    <div>SignUp Page</div>
+    <div>teacher register Page</div>
   )
 }
 
