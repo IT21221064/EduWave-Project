@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EnrollPage from "./pages/EnrollPage/EnrollPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import SignupPage from "./pages/SignupPage/SignupPage";
+import StuRegister from "./pages/SignupPage/StuRegister";
+import StuLoginPage from "./pages/LoginPage/StuLogin";
+import TutLoginPage from "./pages/LoginPage/TutLogin";
+import TutRegister from "./pages/SignupPage/TutRegister";
 
 
 function App() {
@@ -14,7 +17,10 @@ function App() {
         <Route path="/enroll" element={<EnrollPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/register" element={<StuRegister />} />
+        <Route path="/slogin" element={<StuLoginPage />} />
+        <Route path="/tlogin" element={<TutLoginPage />} />
+        <Route path="/tregister" element={<TutRegister />} />
        
       </Routes>
     </Router>
