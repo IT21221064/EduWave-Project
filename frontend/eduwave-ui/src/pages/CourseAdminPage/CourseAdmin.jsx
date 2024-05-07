@@ -24,7 +24,7 @@ const CourseAdmin = () => {
       await axios.put(`http://localhost:5002/api/course/${id}`, { isavailable: true });
       // After updating, fetch courses again to update the table
       const response = await axios.get('http://localhost:5002/api/course');
-      setCourses(response.data.filter(course => !course.isavailable)); // Filter courses with isavailable false
+      setCourses(response.data.filter(course => !course.isavailable)); 
     } catch (error) {
       console.error('Error accepting course:', error);
     }
@@ -36,7 +36,7 @@ const CourseAdmin = () => {
       await axios.delete(`http://localhost:5002/api/course/${id}`);
       // After deleting, fetch courses again to update the table
       const response = await axios.get('http://localhost:5002/api/course');
-      setCourses(response.data.filter(course => !course.isavailable)); // Filter courses with isavailable false
+      setCourses(response.data.filter(course => !course.isavailable)); 
     } catch (error) {
       console.error('Error rejecting course:', error);
     }
