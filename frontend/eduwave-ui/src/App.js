@@ -10,6 +10,7 @@ import StuRegister from "./pages/SignupPage/StuRegister";
 import StuLoginPage from "./pages/LoginPage/StuLogin";
 import TutLoginPage from "./pages/LoginPage/TutLogin";
 import TutRegister from "./pages/SignupPage/TutRegister";
+import StuMyCourse from "./pages/EnrollPage/StuMyCourse";
 
 import UploadCourse from "./pages/CoursePage/UploadCourse";
 import CourseHome from "./pages/CourseHomePage/CourseHome";
@@ -23,15 +24,18 @@ function App() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/checkout" element={<Checkout />} />
 
+
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<StuRegister />} />
         <Route path="/slogin" element={<StuLoginPage />} />
         <Route path="/tlogin" element={<TutLoginPage />} />
         <Route path="/tregister" element={<TutRegister />} />
-
         <Route path="/course-upload" element={<UploadCourse />} />
         <Route path="/course-home" element={<CourseHome />} />
         <Route path="/course-admin" element={<CourseAdmin />} />
+
+        <Route path="/mystucourse" element={<StuMyCourse />} />
+
       </Routes>
     </Router>
   );
