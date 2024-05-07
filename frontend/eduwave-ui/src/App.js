@@ -8,6 +8,7 @@ import StuRegister from "./pages/SignupPage/StuRegister";
 import StuLoginPage from "./pages/LoginPage/StuLogin";
 import TutLoginPage from "./pages/LoginPage/TutLogin";
 import TutRegister from "./pages/SignupPage/TutRegister";
+import StuMyCourse from "./pages/EnrollPage/StuMyCourse";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/slogin" element={<StuLoginPage />} />
         <Route path="/tlogin" element={<TutLoginPage />} />
         <Route path="/tregister" element={<TutRegister />} />
+        <Route path="/mystucourse" element={<StuMyCourse />} />
        
       </Routes>
     </Router>
