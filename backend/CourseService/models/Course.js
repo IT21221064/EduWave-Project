@@ -20,14 +20,19 @@ const courseSchema = new mongoose.Schema({
     isavailable:{
         type:Boolean,
         required: true,
-        default:true
+        default:false
+    },
+   
+    owner:{
+        type:String,
+        required: true
+    },
+    videolink:{
+        type:String,
+        required: true
     },
     file:{
         type:Object,
-        required: true
-    },
-    owner:{
-        type:String,
         required: true
     },
 },

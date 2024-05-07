@@ -3,25 +3,26 @@ const cloudinary = require("../utils/cloudinary");
 
 const addCourse = async (req, res) => {
   try {
-    const { id, name, description, price, isavailable, file, owner } = req.body;
+    const { id, name, description, price, isavailable,  owner,videolink,file} = req.body;
 
-    // Check if the file exists
+    
     if (file) {
-      // Upload file to cloudinary
+  
       const uploadRes = await cloudinary.uploader.upload(file, {
         upload_preset: "EduWave"
       });
 
       if (uploadRes) {
-        // Create a new course instance with uploaded file details
+       
         const course = new Course({
           id,
           name,
           description,
           price,
           isavailable,
-          file: uploadRes,
-          owner
+          owner,
+          videolink,
+          file: uploadRes
         });
 
         // Save the course to the database
