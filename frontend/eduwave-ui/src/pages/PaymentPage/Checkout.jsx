@@ -158,73 +158,95 @@ const Checkout = () => {
               <h5 className="card-title">Customer Details</h5>
               <form>
                 <div className="form-group">
-                  <label>First Name:</label>
+                  <label>
+                    First Name: <span className="text-danger">*</span>
+                  </label>
                   <input
                     type="text"
                     name="first_name"
                     value={customerAttributes.first_name}
                     onChange={handleInputChange}
                     className="form-control"
+                    required
                   />
                 </div>
+
                 <div className="form-group">
-                  <label>Last Name:</label>
+                  <label>
+                    Last Name: <span className="text-danger">*</span>
+                  </label>
                   <input
                     type="text"
                     name="last_name"
                     value={customerAttributes.last_name}
                     onChange={handleInputChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label>Phone:</label>
+                  <label>
+                    Phone: <span className="text-danger">*</span>
+                  </label>
                   <input
                     type="text"
                     name="phone"
                     value={customerAttributes.phone}
                     onChange={handleInputChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label>Email:</label>
+                  <label>
+                    Email: <span className="text-danger">*</span>
+                  </label>
                   <input
                     type="text"
                     name="email"
                     value={customerAttributes.email}
                     onChange={handleInputChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label>Address:</label>
+                  <label>
+                    Address: <span className="text-danger">*</span>
+                  </label>
                   <input
                     type="text"
                     name="address"
                     value={customerAttributes.address}
                     onChange={handleInputChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label>City:</label>
+                  <label>
+                    City: <span className="text-danger">*</span>
+                  </label>
                   <input
                     type="text"
                     name="city"
                     value={customerAttributes.city}
                     onChange={handleInputChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="form-group">
-                  <label>Country:</label>
+                  <label>
+                    Country: <span className="text-danger">*</span>
+                  </label>
                   <input
                     type="text"
                     name="country"
                     value={customerAttributes.country}
                     onChange={handleInputChange}
                     className="form-control"
+                    required
                   />
                 </div>
               </form>
@@ -236,12 +258,6 @@ const Checkout = () => {
             <div className="card-body">
               <h5 className="card-title">Payment Details</h5>
               <table className="table">
-                <thead>
-                  <tr>
-                    <th>Attribute</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
                 <tbody>
                   <tr>
                     <td>Order Id</td>
