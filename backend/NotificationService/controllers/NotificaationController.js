@@ -11,14 +11,12 @@ const getNotification = async (req, res) => {
 
 const addNotification = async (req, res) => {
   const {userId,title, description} = req.body;
-  if (!userId|| !title || !description) {
-    return res.status(400).json({ message: "Fill the inputs" });
-  }
+ 
   try {
-    const notify = await Notification.create({ userId,title,description });
+    const notify = await Notification.create({userId,title,description });
     res.status(200).json(notify);
   } catch (error) {
-    res.status(400).json({ message: "" });
+    res.status(400).json({ message: "error back" });
   }
 };
 
