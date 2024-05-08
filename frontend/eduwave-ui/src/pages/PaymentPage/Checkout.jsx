@@ -19,10 +19,34 @@ const Checkout = () => {
     city: "",
     country: "",
   });
+  const generateRandomOrderId = () => {
+    const min = 100000; // Minimum 6-digit number
+    const max = 999999; // Maximum 6-digit number
+    const orderId = Math.floor(Math.random() * (max - min + 1)) + min;
+    return orderId;
+  };
 
   useEffect(() => {
     // Initialize PayHere
     Payhere.init(1226643, AccountCategory.SANDBOX);
+    const id = localStorage.getItem("userid");
+    console.log(id);
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:4000/api/Learner/${id}`
+        );
+        console.log("User details:", response.data); // Logging user details
+        setCustomerAttributes(response.data);
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    if (id) {
+      fetchData();
+    }
   }, []);
 
   const generateMd5Sig = (merchant_id) => {
@@ -34,8 +58,8 @@ const Checkout = () => {
   const [checkoutAttributes] = useState({
     returnUrl: "http://localhost:3000/return",
     cancelUrl: "http://localhost:3000/cancel",
-    notifyUrl: "http://localhost:5001/api/payment/notify",
-    order_id: "11223",
+    notifyUrl: "http://localhost:5006/api/payment/notify",
+    order_id: generateRandomOrderId(),
     itemTitle: "Demo Item",
     currency: "LKR",
     amount: 100,
@@ -47,7 +71,7 @@ const Checkout = () => {
     alert(errorMsg);
   }
 
-  async function checkout() {
+  const checkout = async (id) => {
     try {
       const customer = new Customer(customerAttributes);
 
@@ -71,13 +95,12 @@ const Checkout = () => {
 
       const addPayment = async () => {
         try {
-          await axios.post("http://localhost:5001/api/payment/add", {
+          await axios.post("http://localhost:5006/api/payment/add", {
             paymentID: checkoutAttributes.order_id,
-            userID: "12345",
+            userID: id,
             amount: checkoutAttributes.amount,
             currency: checkoutAttributes.currency,
             paymentMethod: "Payhere",
-            status: "pending",
             courseID: "1234",
             billingFirstName: customerAttributes.first_name,
             billingLastName: customerAttributes.last_name,
@@ -93,36 +116,30 @@ const Checkout = () => {
       };
       await addPayment();
       payhereCheckout.start();
-      // After checkout is completed successfully
-      payhereCheckout.onCompleted(async () => {
-        try {
-          const response = await fetch(checkoutAttributes.notifyUrl, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              merchant_id: checkoutAttributes.merchant_id,
-              order_id: checkoutAttributes.order_id,
-              payhere_amount: checkoutAttributes.amount,
-              payhere_currency: checkoutAttributes.currency,
-              md5sig: checkoutAttributes.hash,
-            }),
-          });
 
-          if (response.ok) {
-            console.log("Notification sent successfully");
-          } else {
-            console.error("Failed to send notification");
-          }
-        } catch (error) {
-          console.error("Error sending notification:", error);
-        }
+      const response = await fetch(checkoutAttributes.notifyUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          merchant_id: checkoutAttributes.merchant_id,
+          order_id: checkoutAttributes.order_id,
+          payhere_amount: checkoutAttributes.amount,
+          payhere_currency: checkoutAttributes.currency,
+          md5sig: checkoutAttributes.hash,
+        }),
       });
+
+      if (response.ok) {
+        console.log("Notification sent successfully");
+      } else {
+        console.error("Failed to send notification");
+      }
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -219,7 +236,10 @@ const Checkout = () => {
           </tr>
         </tbody>
       </table>
-      <button onClick={checkout} style={{ cursor: "pointer" }}>
+      <button
+        onClick={() => checkout(localStorage.getItem("userid"))}
+        style={{ cursor: "pointer" }}
+      >
         Pay with Payhere
       </button>
     </div>
