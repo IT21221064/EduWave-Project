@@ -77,7 +77,9 @@ const CourseTutor = () => {
             // Update the courses list with the updated course
             const updatedCourses = courses.map(c => (c._id === updatedCourse._id ? updatedCourse : c));
             setCourses(updatedCourses);
+          
             setShowPopup(false);
+            window.location.reload()
              // Close the popup after updating
           }}
         />

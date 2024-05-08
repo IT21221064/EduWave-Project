@@ -67,6 +67,7 @@ const CourseUpdatePopup = ({ course, onClose, onUpdate }) => {
             onChange={handleInputChange}
             required
           />
+             <img src={course.file.secure_url} alt={course.name} />
           <button type="submit">Update</button>
         </form>
       </div>

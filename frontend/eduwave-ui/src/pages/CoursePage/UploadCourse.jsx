@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 
 const UploadCourse = () => {
   const [id, setId] = useState("");
@@ -9,7 +9,7 @@ const UploadCourse = () => {
   const [owner, setOwner] = useState(""); 
   const [file, setFile] = useState(null);
   const [videolink, setVideolink] = useState("");
-  const [isAvailable, setIsAvailable] = useState(false); // State for the uploaded file
+  const [isAvailable, setIsAvailable] = useState(false);
 
   useEffect(() => {
     // Fetch owner from localStorage
@@ -19,12 +19,31 @@ const UploadCourse = () => {
     }
   }, []); // Run once when the component mounts
 
+  useEffect(() => {
+    generateUniqueId();
+  }, []); // Run once when the component mounts
+
+  const generateUniqueId = async () => {
+    try {
+      // Fetch existing course IDs from the database
+      const response = await axios.get('http://localhost:5002/api/course');
+      const existingIds = response.data.map(course => course.id);
+
+      // Generate a random 4-digit number for the course ID
+      let newId;
+      do {
+        newId = Math.floor(1000 + Math.random() * 9000).toString();
+      } while (existingIds.includes(newId)); // Repeat until a unique ID is generated
+
+      setId(newId);
+    } catch (error) {
+      console.error('Error generating unique ID:', error);
+    }
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-      case 'id':
-        setId(value);
-        break;
       case 'name':
         setName(value);
         break;
@@ -74,12 +93,15 @@ const UploadCourse = () => {
       console.log(response); // Handle response data as needed
 
       // Optionally, reset the form fields after successful submission
-      setId('');
       setName('');
       setDescription('');
       setPrice('');
       setOwner('');
       setFile(null);
+      setVideolink('');
+
+      // Generate a new unique ID for the next course
+      generateUniqueId();
     } catch (error) {
       console.error('Error adding course:', error);
       // Handle error state
@@ -94,8 +116,9 @@ const UploadCourse = () => {
         name="id"
         placeholder="ID"
         value={id}
-        onChange={handleInputChange}
+        onChange={() => {}} // Disable input for ID
         required
+        disabled
       />
       <input
         type="text"
@@ -135,7 +158,7 @@ const UploadCourse = () => {
         value={owner}
         onChange={handleInputChange}
         required
-        disabled // Disable the owner input field since it's fetched from localStorage
+        disabled
       />
       <input
         type="text"
@@ -147,7 +170,7 @@ const UploadCourse = () => {
       />
       {file ? (
         <>
-          <img src={file} alt="error!" />
+          <img src={file} alt="Course preview" />
         </>
       ) : (
         <p>Course image upload preview will appear here!</p>
