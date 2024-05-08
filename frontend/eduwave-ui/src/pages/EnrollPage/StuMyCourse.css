@@ -1,41 +1,81 @@
-.stu-my-course {
-    padding: 20px;
+.wholepage-mycourse {
+    /* Add styles for the entire page */
   }
   
-  .course-heading {
-    font-size: 24px;
-    margin-bottom: 20px;
+  .student-stu-my-course {
+    /* Add styles for the section containing student course content */
   }
   
-  .course-list {
-    list-style-type: none;
-    padding: 0;
+  .student-course-heading {
+    text-align: center;
+    font-family: "Poppins", sans-serif !important;
   }
   
-  .course-item {
-    margin-bottom: 30px;
-    border: 1px solid #ccc;
-    padding: 20px;
+  .sturow {
+    /* Add styles for the row containing course cards */
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .stucourse-card {
+    /* Add styles for each course card */
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .student-course-image {
+    /* Add styles for the course image */
+    width: 100%;
+    height: auto;
     border-radius: 5px;
   }
   
-  .course-name {
-    font-size: 20px;
-    margin-bottom: 10px;
+  .stucourse-details {
+    /* Add styles for the course details */
+    padding: 10px;
   }
   
-  .course-description,
-  .course-price,
-  .course-owner,
-  .course-video-link {
+  .student-course-name {
+    /* Add styles for the course name */
+    font-size: 18px;
+    font-weight: bold;
     margin-bottom: 5px;
   }
   
-  .course-video-link a {
-    color: blue;
+  .student-course-description,
+  .student-course-price,
+  .student-course-owner,
+  .student-course-video-link {
+    /* Add styles for the course details (description, price, owner, video link) */
+    margin-bottom: 5px;
   }
   
-  .course-video-link a:hover {
+  .student-course-video-link a {
+    /* Add styles for the video link */
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .student-course-video-link a:hover {
+    /* Add styles for the video link on hover */
     text-decoration: underline;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 992px) {
+    /* Add styles for medium screens (md) */
+    .stucourse-card {
+      flex-basis: 50%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    /* Add styles for small screens (sm) */
+    .stucourse-card {
+      flex-basis: 100%;
+    }
   }
   
