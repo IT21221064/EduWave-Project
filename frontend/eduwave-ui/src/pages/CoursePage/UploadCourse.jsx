@@ -213,6 +213,17 @@ const UploadCourse = () => {
           />
           {errors.videolink && <span className="error">{errors.videolink}</span>}
         </div>
+        <div className="course-form-group">
+        <label>Owner:</label>
+        <input
+          type="text"
+          name="owner"
+          placeholder="Owner"
+          value={owner}
+          onChange={handleInputChange}
+          required
+          disabled/>
+          </div>
         <button className='course-button' type="submit">Upload</button> 
       </form>
       <div className="course-image-preview">
