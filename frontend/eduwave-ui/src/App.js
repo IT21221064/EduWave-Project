@@ -23,6 +23,9 @@ import PaymentDetails from "./pages/PaymentPage/PaymentDetails";
 import CourseTutor from "./pages/CourseTutorPage/CourseTutor";
 
 
+import MyNotificationsPage from "./pages/NotificationPage/MyNotificationsPage";
+
+
 function App() {
   return (
     <Router>
@@ -45,6 +48,9 @@ function App() {
         <Route path="/course-tutor" element={<CourseTutor />} />
 
         <Route path="/mystucourse" element={<StuMyCourse />} />
+
+        <Route path="/my-notifications" element={<MyNotificationsPage/>}/>
+
       </Routes>
     </Router>
   );

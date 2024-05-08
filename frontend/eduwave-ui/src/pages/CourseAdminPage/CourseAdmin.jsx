@@ -26,11 +26,22 @@ const CourseAdmin = () => {
       await axios.put(`http://localhost:5002/api/course/${id}`, { isavailable: true });
       // After updating, fetch courses again to update the table
       const response = await axios.get('http://localhost:5002/api/course');
-      setCourses(response.data.filter(course => !course.isavailable)); 
+      const description = response.data.find(course => course._id === id)?.name;
+      const title = "Accepted";
+      console.log(description);
+      setCourses(response.data.filter(course => !course.isavailable));
+      const userId = localStorage.getItem('userid');
+      console.log(userId);
+      await axios.post(`http://localhost:5003/api/Notification/`, { userId, title, description });
+  
     } catch (error) {
       console.error('Error accepting course:', error);
+      if (error.response) {
+        console.log('Error response:', error.response.data);
+      }
     }
   };
+  
 
   const handleReject = async (id) => {
     try {
