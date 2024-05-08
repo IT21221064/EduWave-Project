@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  authentication:
+    build:
+      context: ./AuthenticationService
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - MONGO_URI=mongodb+srv://eduwave11:027u4p2OHjPJEY07@cluster0.yazy0gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - SECRET=nhnhnskfalhfksahkhffalfaalf
+    depends_on:
+      - mongo
+
+  notification:
+    build:
+      context: ./NotificationService
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb+srv://eduwave11:027u4p2OHjPJEY07@cluster0.yazy0gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - SECRET=nhnhnskfalhfksahkhffalfaalf
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
