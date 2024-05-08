@@ -1,0 +1,72 @@
+/* CourseAdmin.css */
+
+.cadmin-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .cadmin-heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cadmin-cardView {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  }
+  
+  .cadmin-table {
+    width: 95%; /* Adjusted width */
+    margin: 0 auto; /* Center align the table */
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden; /* Hide overflow content */
+  }
+  
+  .cadmin-table th,
+  .cadmin-table td {
+    padding: 12px; /* Add padding for better spacing */
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .cadmin-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+  
+  .cadmin-table td img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .cadmin-accept-btn,
+  .cadmin-reject-btn {
+    padding: 8px 16px; /* Increase padding for better button size */
+    margin-right: 8px; /* Add margin between buttons */
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cadmin-accept-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .cadmin-reject-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .cadmin-accept-btn:hover,
+  .cadmin-reject-btn:hover {
+    filter: brightness(85%); /* Decrease brightness on hover */
+  }
+  
