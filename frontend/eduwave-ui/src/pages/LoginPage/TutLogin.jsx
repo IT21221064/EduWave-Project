@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link , useNavigate } from 'react-router-dom';
+import './LoginPage.css'
 
 const TutLoginPage = () => {
 
@@ -33,30 +35,41 @@ const TutLoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p>{error}</p>}
+    <div className='signupbackground'>
+    <div className="login-container">
+      <h1>Tutor Login</h1>
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
+        <div className="form-group">
+          <label htmlFor="username" className='loginlabel'>Username:</label>
           <input
             type="text"
             id="username"
+            className="input-field"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className="form-group">
+          <label htmlFor="password" className='loginlabel'>Password:</label>
           <input
             type="password"
             id="password"
+            className="input-field"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-button">Login</button>
+        <p className='logintext'>Dont have an account?</p>
+        <Link to="/tregister">
+          <button className="signupbtn">Register</button>
+        </Link>
+        <Link to="/">
+            <button className="welcbtn">Go Back</button>
+        </Link>
       </form>
+    </div>
     </div>
   );
 };
