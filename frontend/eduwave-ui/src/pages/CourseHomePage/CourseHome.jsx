@@ -40,7 +40,7 @@ const CourseHome = () => {
         className="search-input"
       />
       </div>
-      <br />
+      <br /> 
       {filteredCourses.map(course => (
         <div key={course._id} className="course-card">
           <img src={course.file.secure_url} alt={course.name} />
