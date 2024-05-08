@@ -11,4 +11,13 @@ router.get("/", paymentController.getAllPayments);
 // Route for retrieving a single payment by ID
 router.get("/:id", paymentController.getPaymentById);
 
+// Route for handling payment notification
+router.post("/notify", paymentController.handleNotify);
+
+// Route for handling return URL
+router.get("/return", paymentController.handleReturn);
+
+// Route for handling cancel URL
+router.get("/cancel", paymentController.handleCancel);
+
 module.exports = router;
