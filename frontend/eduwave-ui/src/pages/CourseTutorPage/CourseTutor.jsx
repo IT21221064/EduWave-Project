@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import CourseUpdatePopup from '../../components/Course/CourseUpdatePopup'; // Import the popup/modal component
 
 const CourseTutor = () => {
   const [courses, setCourses] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState(null); // State to store selected course data
+  const [showPopup, setShowPopup] = useState(false); // State to manage the visibility of the popup/modal
   const tutorUsername = localStorage.getItem('username');
 
   useEffect(() => {
@@ -30,8 +33,9 @@ const CourseTutor = () => {
       const response = await axios.get(`http://localhost:5002/api/course/${id}`);
       const courseData = response.data;
 
-      // Implement your update logic here, such as displaying a form with pre-populated data
-      console.log('Update course:', courseData);
+      // Set the selected course and open the popup
+      setSelectedCourse(courseData);
+      setShowPopup(true);
     } catch (error) {
       console.error('Error updating course:', error);
     }
@@ -63,6 +67,21 @@ const CourseTutor = () => {
           </div>
         </div>
       ))}
+
+      {/* Render the popup/modal if showPopup is true */}
+      {showPopup && (
+        <CourseUpdatePopup
+          course={selectedCourse}
+          onClose={() => setShowPopup(false)} // Close the popup when onClose is triggered
+          onUpdate={(updatedCourse) => {
+            // Update the courses list with the updated course
+            const updatedCourses = courses.map(c => (c._id === updatedCourse._id ? updatedCourse : c));
+            setCourses(updatedCourses);
+            setShowPopup(false);
+             // Close the popup after updating
+          }}
+        />
+      )}
     </div>
   );
 };
