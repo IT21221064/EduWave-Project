@@ -1,27 +1,31 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const paymentRouter = require("./routes/PaymentRoute");
+const dotenv = require("dotenv");
+const router = require("./routes/PaymentRoute");
 
-require("dotenv").config();
+dotenv.config();
 
 const app = express();
 
-//1) Middlewares
+// Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//2) Route
-app.use("/api/payment", paymentRouter);
-
-//3)MONGO DB CONNECTION
+// MongoDB Connection
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("DB CONNECTED"))
-  .catch((err) => console.log("DB CONNECTION ERROR", err));
-app.use(cors({ origin: true, credentials: true }));
+  .catch((err) => console.error("DB CONNECTION ERROR", err));
 
-const port = process.env.PORT;
-const backend = app.listen(port, () =>
-  console.log(`server is running ${port}`)
-);
+// Routes
+app.use("/api/payment", router);
+
+const port = process.env.PORT || 5001;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
