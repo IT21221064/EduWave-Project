@@ -1,6 +1,7 @@
 import Navbar from '../../components/navbar/Navbar';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './EnrollPage.css'
 
 const EnrollPage = () => {
     const [courses, setCourses] = useState([]);
@@ -32,18 +33,18 @@ const EnrollPage = () => {
   
 
     return (
-        <div>
+        <div className="wholepage-enroll">
             <Navbar />
             <div className="course-container">
                 {courses.map(course => (
                     <div key={course._id} className="course-card">
-                        <img src={course.file.secure_url} alt={course.name} />
+                        <img src={course.file.secure_url} alt={course.name} className="course-image" />
                         <div className="course-details">
-                            <h3>{course.name}</h3>
-                            <p>{course.description}</p>
-                            <p>Price: ${course.price}</p>
-                            <p>Owner: {course.owner}</p>
-                            <button onClick={() => handleEnroll(course)}>Enroll</button>
+                            <h3 className="course-title">{course.name}</h3>
+                            <p className="course-description">{course.description}</p>
+                            <p className="course-price">Price: ${course.price}</p>
+                            <p className="course-owner">Owner: {course.owner}</p>
+                            <button className="enroll-button" onClick={() => handleEnroll(course)}>Enroll</button>
                         </div>
                     </div>
                 ))}

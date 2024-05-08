@@ -40,8 +40,5 @@
   .navtext:hover {
     color: #b9b9b9; /* Change the text color on hover */
   }
-  
-  .text:focus {
-    outline: none; /* Remove outline on focus */
-  }
+
   
