@@ -1,0 +1,100 @@
+
+  .signupbackground {
+    background-image: url('../../../public/images/loginb.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    color: azure;
+    max-width: 400px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* The rest of the CSS remains the same */
+  
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .loginlabel{
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-field {
+    width: 95%;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  .error-message {
+    color: #ff0000;
+    margin-bottom: 10px;
+  }
+
+  .logintext{
+    margin-top: 30px;
+    margin-bottom: 0px;
+    font-size: 0.9rem;
+    color: rgb(255, 255, 255);
+  }
+  .login-button{
+    font-size: 17px;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .login-button:hover{
+    color: black;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .signupbtn{
+    font-size: 17px;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .signupbtn:hover{
+    color: black;
+    background-color: rgb(255, 255, 255);
+  }
+
+  .welcbtn{
+    font-size: 17px;
+    border: none;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .welcbtn:hover{
+    color: black;
+    background-color: rgb(255, 255, 255);
+  }
+  

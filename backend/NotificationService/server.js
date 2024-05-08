@@ -4,6 +4,7 @@ require('dotenv').config(); //require and directly invoke the config method
 const express = require('express');
 const mongoose = require('mongoose');
 const NotificationRoutes = require('./routes/NotificationRoute');
+const EmailRoutes = require('./routes/EmailRoute')
 const connectDB = require("./config/DB");
 
 const PORT = process.env.PORT;
@@ -21,5 +22,6 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/api/Notification', NotificationRoutes);
+app.use('/api/Email', EmailRoutes);
 
 app.listen(PORT, () => console.log(`Server Started on port ${PORT}`));
