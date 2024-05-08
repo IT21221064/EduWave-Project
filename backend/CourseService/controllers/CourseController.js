@@ -85,10 +85,28 @@ const deleteCourse = async (req, res) => {
     res.status(500).json({ message: "Server Error - Unable to delete course" });
   }
 };
+const getCourseById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find the course by its ID
+    const course = await Course.findById(id);
+
+    if (!course) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+
+    res.status(200).json(course);
+  } catch (error) {
+    console.error("Error fetching course by ID:", error);
+    res.status(500).json({ message: "Server Error - Unable to get course" });
+  }
+};
 
 module.exports = {
   addCourse,
   getCourse,
   updateCourse,
-  deleteCourse
+  deleteCourse,
+  getCourseById
 };

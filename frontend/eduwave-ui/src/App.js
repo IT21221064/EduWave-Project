@@ -15,6 +15,7 @@ import StuMyCourse from "./pages/EnrollPage/StuMyCourse";
 import UploadCourse from "./pages/CoursePage/UploadCourse";
 import CourseHome from "./pages/CourseHomePage/CourseHome";
 import CourseAdmin from "./pages/CourseAdminPage/CourseAdmin";
+import CourseTutor from "./pages/CourseTutorPage/CourseTutor";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/course-upload" element={<UploadCourse />} />
         <Route path="/course-home" element={<CourseHome />} />
         <Route path="/course-admin" element={<CourseAdmin />} />
+        <Route path="/course-tutor" element={<CourseTutor />} />
 
         <Route path="/mystucourse" element={<StuMyCourse />} />
 

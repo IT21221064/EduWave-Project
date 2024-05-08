@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 
 const UploadCourse = () => {
@@ -8,9 +8,17 @@ const UploadCourse = () => {
   const [price, setPrice] = useState(0);
   const [owner, setOwner] = useState(""); 
   const [file, setFile] = useState(null);
-  const [videolink, setvideolink] = useState("");
-  const [isavailable, setisavailable] = useState(false); // State for the uploaded file
-  
+  const [videolink, setVideolink] = useState("");
+  const [isAvailable, setIsAvailable] = useState(false); // State for the uploaded file
+
+  useEffect(() => {
+    // Fetch owner from localStorage
+    const ownerFromLocalStorage = localStorage.getItem('username');
+    if (ownerFromLocalStorage) {
+      setOwner(ownerFromLocalStorage);
+    }
+  }, []); // Run once when the component mounts
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
@@ -23,14 +31,14 @@ const UploadCourse = () => {
       case 'description':
         setDescription(value);
         break;
-        case 'price':
-            setPrice(parseFloat(value)); 
-            break;
+      case 'price':
+        setPrice(parseFloat(value)); 
+        break;
       case 'owner':
         setOwner(value);
         break;
-        case 'videolink':
-         setvideolink(value);
+      case 'videolink':
+        setVideolink(value);
         break;
       default:
         break;
@@ -57,12 +65,11 @@ const UploadCourse = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setisavailable(false);
-    debugger;
+    setIsAvailable(false);
     try {
-         const response = await axios.post('http://localhost:5002/api/course',{ id, name, description, price, isavailable, owner, videolink, file},{
-            timeout: 100000 
-         });
+      const response = await axios.post('http://localhost:5002/api/course', { id, name, description, price, isAvailable, owner, videolink, file }, {
+        timeout: 100000 
+      });
 
       console.log(response); // Handle response data as needed
 
@@ -117,7 +124,7 @@ const UploadCourse = () => {
       <input
         type="file"
         name="file"
-        accept="video/*"
+        accept="image/*"
         onChange={handleFileChange}
         required
       />
@@ -128,22 +135,23 @@ const UploadCourse = () => {
         value={owner}
         onChange={handleInputChange}
         required
+        disabled // Disable the owner input field since it's fetched from localStorage
       />
-         <input
+      <input
         type="text"
         name="videolink"
-        placeholder="videolink"
+        placeholder="Videolink"
         value={videolink}
         onChange={handleInputChange}
         required
       />
       {file ? (
-          <>
-            <img src={file} alt="error!" />
-          </>
-        ) : (
-          <p>course image upload preview will appear here!</p>
-        )}
+        <>
+          <img src={file} alt="error!" />
+        </>
+      ) : (
+        <p>Course image upload preview will appear here!</p>
+      )}
       <button type="submit">Upload</button> 
     </form>
   );
