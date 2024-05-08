@@ -19,8 +19,8 @@ function Navbar() {
         </Link>
         <ul className="nav">
           <li className="nav-item">
-            <Link to="/" className="navtext">
-              Home
+            <Link to="/my-payments" className="navtext">
+              My payments
             </Link>
           </li>
           <li className="nav-item">
