@@ -1,27 +1,24 @@
-// PaymentDetails.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom"; // Import useParams from react-router-dom
+import { useParams } from "react-router-dom";
 
 const PaymentDetails = () => {
-  const { id } = useParams(); // Access route parameter 'id' using useParams
+  const { id } = useParams();
   const [payment, setPayment] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch payment details by ID from the API
     axios
       .get(`http://localhost:5006/api/payment/${id}`)
       .then((response) => {
         setPayment(response.data.data);
         setLoading(false);
-        console.log(response.data.data);
       })
       .catch((error) => {
         console.error("Error fetching payment details:", error);
         setLoading(false);
       });
-  }, [id]); // Use `id` obtained from useParams as the dependency
+  }, [id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -32,32 +29,61 @@ const PaymentDetails = () => {
   }
 
   return (
-    <div>
-      <h1>Payment Details</h1>
-      <div>
-        <strong>Order ID:</strong> {payment.paymentID}
+    <div className="container">
+      <h1 className="text-center my-4">Payment Details</h1>
+      <div className="row">
+        <div className="col-md-6">
+          <div className="card mb-3">
+            <div className="card-body">
+              <h5 className="card-title">Order Information</h5>
+              <p className="card-text">
+                <strong>Order ID:</strong> {payment.paymentID}
+              </p>
+              <p className="card-text">
+                <strong>Paid Date:</strong>{" "}
+                {new Date(payment.timestamp).toLocaleDateString()}
+              </p>
+              <p className="card-text">
+                <strong>Price:</strong> {payment.amount} {payment.currency}
+              </p>
+              <p className="card-text">
+                <strong>Status:</strong> {payment.status}
+              </p>
+              <p className="card-text">
+                <strong>Billing Address:</strong> {payment.billingAddress}
+              </p>
+              <p className="card-text">
+                <strong>Billing City:</strong> {payment.billingCity}
+              </p>
+              <p className="card-text">
+                <strong>Billing Country:</strong> {payment.billingCountry}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Payment Information</h5>
+              <p className="card-text">
+                <strong>Payment Method:</strong> {payment.paymentMethod}
+              </p>
+              <p className="card-text">
+                <strong>Course ID:</strong> {payment.courseID}
+              </p>
+              <p className="card-text">
+                <strong>Created At:</strong> {payment.createdAt}
+              </p>
+              <p className="card-text">
+                <strong>Transaction ID:</strong> {payment.transactionID}
+              </p>
+              <p className="card-text">
+                <strong>Updated At:</strong> {payment.updatedAt}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <strong>Paid Date:</strong>{" "}
-        {new Date(payment.timestamp).toLocaleDateString()}
-      </div>
-      <div>
-        <strong>Price:</strong> {payment.amount} {payment.currency}
-      </div>
-      <div>
-        <strong>Status:</strong> {payment.status}
-      </div>
-      {/* Other payment details */}
-      <div>
-        <strong>Billing Address:</strong> {payment.billingAddress}
-      </div>
-      <div>
-        <strong>Billing City:</strong> {payment.billingCity}
-      </div>
-      <div>
-        <strong>Billing Country:</strong> {payment.billingCountry}
-      </div>
-      {/* Render other payment details as needed */}
     </div>
   );
 };
