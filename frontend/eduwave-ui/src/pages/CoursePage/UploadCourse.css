@@ -1,0 +1,65 @@
+.course-upload-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px; /* Add margin as needed */
+  }
+  
+  .course-upload-form {
+    width: 48%; /* Adjusted width */
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+  }
+  
+  .course-image-preview {
+    width: 48%; /* Adjusted width */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .course-image-preview img {
+    max-width: 100%;
+  }
+  
+  .course-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .course-form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .course-form-group input,
+  .course-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .course-form-group textarea {
+    height: 100px;
+  }
+  
+  .course-button {
+    background-color: #243d57;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .course-button:hover {
+    background-color: #7c94ad;
+  }
+  .error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }

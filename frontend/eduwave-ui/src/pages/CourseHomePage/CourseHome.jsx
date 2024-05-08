@@ -1,3 +1,4 @@
+// CourseHome.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CourseHome.css'; // Import CSS file for styling
@@ -30,28 +31,31 @@ const CourseHome = () => {
   };
 
   return (
-    <div className="course-container">
+    <div className="chome-container">
       <div>
-      <input
-        type="text"
-        placeholder="Search courses..."
-        value={searchQuery}
-        onChange={handleSearchChange}
-        className="search-input"
-      />
+        <input
+          type="text"
+          placeholder="Search courses..."
+          value={searchQuery}
+          onChange={handleSearchChange}
+          className="chome-search-input"
+        />
       </div>
-      <br /> 
-      {filteredCourses.map(course => (
-        <div key={course._id} className="course-card">
-          <img src={course.file.secure_url} alt={course.name} />
-          <div className="course-details">
-            <h3>{course.name}</h3>
-            <p>{course.description}</p>
-            <p>Price: ${course.price}</p>
-            <p>by: {course.owner}</p>
+      <br />
+      <div className="chome-course-container">
+        {filteredCourses.map(course => (
+          <div key={course._id} className="chome-course-card">
+            <img src={course.file.secure_url} alt={course.name} className="chome-course-image" />
+            <div className="chome-course-details">
+              <h3 className="chome-course-title">{course.name}</h3>
+              <p className="chome-course-description">Description:{course.description}</p>
+              <p className="chome-course-price">Price: ${course.price}</p>
+              <p className="chome-course-owner">by: {course.owner}</p>
+              <button className="chome-course-button">Enroll Now</button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
