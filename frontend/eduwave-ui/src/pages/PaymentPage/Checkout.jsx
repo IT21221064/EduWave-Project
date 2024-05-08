@@ -8,6 +8,7 @@ import {
   PayhereCheckout,
 } from "@payhere-js-sdk/client";
 import md5 from "md5";
+import "./Checkout.css"; // Import CSS file
 
 const Checkout = () => {
   const [customerAttributes, setCustomerAttributes] = useState({
@@ -19,6 +20,7 @@ const Checkout = () => {
     city: "",
     country: "",
   });
+
   const generateRandomOrderId = () => {
     const min = 100000; // Minimum 6-digit number
     const max = 999999; // Maximum 6-digit number
@@ -30,14 +32,12 @@ const Checkout = () => {
     // Initialize PayHere
     Payhere.init(1226643, AccountCategory.SANDBOX);
     const id = localStorage.getItem("userid");
-    console.log(id);
 
     const fetchData = async () => {
       try {
         const response = await axios.get(
           `http://localhost:4000/api/Learner/${id}`
         );
-        console.log("User details:", response.data); // Logging user details
         setCustomerAttributes(response.data);
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -150,98 +150,125 @@ const Checkout = () => {
   };
 
   return (
-    <div>
-      <div>
-        <label>First Name:</label>
-        <input
-          type="text"
-          name="first_name"
-          value={customerAttributes.first_name}
-          onChange={handleInputChange}
-        />
+    <div className="container">
+      <div className="row">
+        <div className="col-md-8 ">
+          <div className="payment-form-card">
+            <div className="card-body">
+              <h5 className="card-title">Customer Details</h5>
+              <form>
+                <div className="form-group">
+                  <label>First Name:</label>
+                  <input
+                    type="text"
+                    name="first_name"
+                    value={customerAttributes.first_name}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Last Name:</label>
+                  <input
+                    type="text"
+                    name="last_name"
+                    value={customerAttributes.last_name}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Phone:</label>
+                  <input
+                    type="text"
+                    name="phone"
+                    value={customerAttributes.phone}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Email:</label>
+                  <input
+                    type="text"
+                    name="email"
+                    value={customerAttributes.email}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Address:</label>
+                  <input
+                    type="text"
+                    name="address"
+                    value={customerAttributes.address}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>City:</label>
+                  <input
+                    type="text"
+                    name="city"
+                    value={customerAttributes.city}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Country:</label>
+                  <input
+                    type="text"
+                    name="country"
+                    value={customerAttributes.country}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4">
+          <div className=" payment-details-card">
+            <div className="card-body">
+              <h5 className="card-title">Payment Details</h5>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Order Id</td>
+                    <td>{checkoutAttributes.order_id}</td>
+                  </tr>
+                  <tr>
+                    <td>Course name</td>
+                    <td>{checkoutAttributes.itemTitle}</td>
+                  </tr>
+                  <tr>
+                    <td>Price</td>
+                    <td>
+                      {checkoutAttributes.amount} {checkoutAttributes.currency}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button
+                onClick={() => checkout(localStorage.getItem("userid"))}
+                className="btn btn-primary"
+              >
+                Pay with Payhere
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <label>Last Name:</label>
-        <input
-          type="text"
-          name="last_name"
-          value={customerAttributes.last_name}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label>Phone:</label>
-        <input
-          type="text"
-          name="phone"
-          value={customerAttributes.phone}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="text"
-          name="email"
-          value={customerAttributes.email}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label>Address:</label>
-        <input
-          type="text"
-          name="address"
-          value={customerAttributes.address}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label>City:</label>
-        <input
-          type="text"
-          name="city"
-          value={customerAttributes.city}
-          onChange={handleInputChange}
-        />
-      </div>
-      <div>
-        <label>Country:</label>
-        <input
-          type="text"
-          name="country"
-          value={customerAttributes.country}
-          onChange={handleInputChange}
-        />
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Attribute</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Order Id</td>
-            <td>{checkoutAttributes.order_id}</td>
-          </tr>
-          <tr>
-            <td>Course name</td>
-            <td>{checkoutAttributes.itemTitle}</td>
-          </tr>
-          <tr>
-            <td>Price</td>
-            <td>{checkoutAttributes.amount}</td>
-          </tr>
-        </tbody>
-      </table>
-      <button
-        onClick={() => checkout(localStorage.getItem("userid"))}
-        style={{ cursor: "pointer" }}
-      >
-        Pay with Payhere
-      </button>
     </div>
   );
 };

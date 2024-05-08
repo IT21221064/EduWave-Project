@@ -1,0 +1,29 @@
+/* PaymentDetails.css */
+.payment-details-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.payment-details-heading {
+  margin-bottom: 20px;
+}
+
+.payment-details-card {
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.payment-detail-item {
+  margin-bottom: 10px;
+}
+
+.payment-detail-label {
+  font-weight: bold;
+}
+
+.payment-detail-value {
+  margin-left: 5px;
+}
