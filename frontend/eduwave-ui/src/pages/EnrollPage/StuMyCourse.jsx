@@ -15,14 +15,13 @@ const StuMyCourse = () => {
                 const response = await axios.get(`http://localhost:5000/enroll/${userId}`);
                 const enrollments = response.data;
 
-                // Fetch course details for each enrollment
                 const coursePromises = enrollments.map(async enrollment => {
                     const courseId = enrollment.course;
                     const courseResponse = await axios.get(`http://localhost:5002/api/course/${courseId}`);
                     return courseResponse.data;
                 });
 
-                // Wait for all course details to be fetched
+
                 const courseDetails = await Promise.all(coursePromises);
                 setCourses(courseDetails);
             } catch (error) {
@@ -34,24 +33,28 @@ const StuMyCourse = () => {
     }, []);
 
     return (
-        <div>
-        <Navbar />
-        <div className="stu-my-course">
-            <h2 className="course-heading">My Courses</h2>
-            <ul className="course-list">
-                {courses.map(course => (
-                    <li key={course.id} className="course-item">
-                        <img src={course.file.secure_url} alt={course.name} className="course-image" />
-                        <h3 className="course-name">{course.name}</h3>
-                        <p className="course-description">Description: {course.description}</p>
-                        <p className="course-price">Price: ${course.price}</p>
-                        <p className="course-owner">Owner: {course.owner}</p>
-                        <p className="course-video-link">Video Link: <a href={course.videolink}>{course.videolink}</a></p>
-                    </li>
-                ))}
-            </ul>
-        </div>
-        <Footer />
+        <div className='wholepage-mycourse' >
+            <Navbar />
+            <div className="student-stu-my-course">
+                <h2 className="student-course-heading">My Courses</h2>
+                <div className="row">
+                    {courses.map(course => (
+                        <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
+                            <div className="stucourse-card">
+                                <img src={course.file.secure_url} alt={course.name} className="student-course-image" />
+                                <div className="stucourse-details">
+                                    <h3 className="student-course-name">{course.name}</h3>
+                                    <p className="student-course-description">Description: {course.description}</p>
+                                    <p className="student-course-price">Price: ${course.price}</p>
+                                    <p className="student-course-owner">Owner: {course.owner}</p>
+                                    <p className="student-course-video-link">Video Link: <a href={course.videolink}>{course.videolink}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <Footer />
         </div>
     );
 };
