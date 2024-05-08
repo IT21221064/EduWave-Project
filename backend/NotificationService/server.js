@@ -6,10 +6,19 @@ const mongoose = require('mongoose');
 const NotificationRoutes = require('./routes/NotificationRoute');
 const EmailRoutes = require('./routes/EmailRoute')
 const connectDB = require("./config/DB");
+const cors = require('cors');
 
 const PORT = process.env.PORT;
 //express app
 const app = express(); //invokes the function
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
 connectDB();
 //middleware
 app.use(express.json()); //if the request has a body or data then it passes and attaches to req object

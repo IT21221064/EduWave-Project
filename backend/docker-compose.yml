@@ -19,13 +19,57 @@ services:
       context: ./NotificationService
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "5003:5003"
     environment:
-      - PORT=5000
+      - PORT=5003
       - MONGO_URI=mongodb+srv://eduwave11:027u4p2OHjPJEY07@cluster0.yazy0gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       - SECRET=nhnhnskfalhfksahkhffalfaalf
     depends_on:
       - mongo
+
+  payment:
+    build:
+      context: ./PaymentService
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - PORT=5001
+      - MONGO_URI=mongodb+srv://eduwave11:027u4p2OHjPJEY07@cluster0.yazy0gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - SECRET=nhnhnskfalhfksahkhffalfaalf
+    depends_on:
+      - mongo 
+
+  enroll:
+    build:
+      context: ./EnrollService
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5005"
+    environment:
+      - PORT=5005
+      - MONGO_URI=mongodb+srv://eduwave11:027u4p2OHjPJEY07@cluster0.yazy0gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - SECRET=nhnhnskfalhfksahkhffalfaalf
+    depends_on:
+      - mongo
+
+  course:
+    build:
+      context: ./CourseService
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
+    environment:
+      - CLOUDINARY_NAME=diuh7ykom
+      - CLOUDINARY_API_KEY=589598586315694
+      - CLOUDINARY_API_SECRET=usW9W7LD8I1-GnALVj41B_VZIMA
+      - PORT=5002
+      - MONGO_URI=mongodb+srv://eduwave11:027u4p2OHjPJEY07@cluster0.yazy0gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    depends_on:
+      - mongo  
+
+
+
 
   mongo:
     image: mongo:latest
