@@ -19,21 +19,12 @@ function Navbar() {
         </Link>
         <ul className="nav">
           <li className="nav-item">
-            <Link to="/my-payments" className="navtext">
-              My payments
+            <Link to="/newcourse" className="navtext">
+             New Courses
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/enroll" className="navtext">
-            Courses
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/mystucourse" className="navtext">My Courses
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/mystucourse" className="navtext">Notifications
+            <Link to="/course-admin" className="navtext">Courses
             </Link>
           </li>
           <li className="nav-item">
