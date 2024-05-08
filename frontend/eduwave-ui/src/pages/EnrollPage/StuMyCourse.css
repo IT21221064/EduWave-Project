@@ -1,0 +1,41 @@
+.stu-my-course {
+    padding: 20px;
+  }
+  
+  .course-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .course-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .course-item {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .course-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .course-description,
+  .course-price,
+  .course-owner,
+  .course-video-link {
+    margin-bottom: 5px;
+  }
+  
+  .course-video-link a {
+    color: blue;
+  }
+  
+  .course-video-link a:hover {
+    text-decoration: underline;
+  }
+  
