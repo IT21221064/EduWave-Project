@@ -10,6 +10,9 @@ const EnrollSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    state: {
+        type: String
+    },
 });
 
 const Enroll = mongoose.model("Enroll", EnrollSchema);
