@@ -24,7 +24,7 @@ function Navbar() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/courses" className="navtext">
+            <Link to="/enroll" className="navtext">
             Courses
             </Link>
           </li>
