@@ -46,8 +46,8 @@
     height: 100px;
   }
   
-  button {
-    background-color: #007bff;
+  .course-button {
+    background-color: #243d57;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -55,7 +55,11 @@
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .course-button:hover {
+    background-color: #7c94ad;
   }
-  
+  .error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }

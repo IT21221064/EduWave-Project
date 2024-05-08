@@ -1,0 +1,50 @@
+/* CourseTutor.css */
+
+.ctutor-course-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .ctutor-course-card {
+    margin-left: 200px;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 900px;
+  }
+  
+  .ctutor-course-image {
+    width: 300px; /* Adjust width of the image */
+    height: auto;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  
+  .ctutor-course-details {
+    flex-grow: 1; /* Grow to fill remaining space */
+  }
+  
+  .ctutor-course-details h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .ctutor-course-details p {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .ctutor-course-buttons button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    background-color: #202098;
+    color: white;
+  }
+  

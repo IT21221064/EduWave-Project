@@ -1,34 +1,72 @@
-.course-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .course-card {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(33.33% - 40px);
-  }
-  
-  .course-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .course-details {
-    margin-top: 10px;
-  }
-  
-  .course-details h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .course-details p {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
+/* CourseHome.css */
+
+.chome-container {
+  padding: 20px;
+}
+
+.chome-search-input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-left: 150px;
+}
+
+.chome-course-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chome-course-card {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(28% - 5px);
+}
+
+.chome-course-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.chome-course-details {
+  margin-top: 10px;
+}
+
+.chome-course-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.chome-course-description {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.chome-course-price {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.chome-course-owner {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.ctutor-course-buttons{
+  margin-left: 400px;
+}
+.chome-course-button {
+  padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  background-color: #171755;
+  color: white;
+  margin-left: 300px;
+}
