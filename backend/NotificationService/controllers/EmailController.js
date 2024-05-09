@@ -17,7 +17,7 @@ async function sendEnrollmentEmail(studentEmail, courseName) {
         from: 'eduwave11@gmail.com', // Sender email address
         to: studentEmail, // Recipient email address
         subject: 'Enrollment Confirmation', // Email subject
-        text: `Dear Student, \n\nYou have successfully enrolled in the ${courseName} course. \n\nRegards, \nYour Name` // Plain text body
+        text: `Dear Student, \n\nYou have successfully enrolled in the ${courseName} course. \n\nRegards, \nEdu Wave` // Plain text body
         // You can also include HTML content if you prefer
     };
 
