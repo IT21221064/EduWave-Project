@@ -79,3 +79,23 @@
   background-color: #007bff; /* Change background color on hover */
   color: #fff; /* Change text color on hover */
 }
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.dot-success {
+  background-color: green;
+}
+
+.dot-fail {
+  background-color: red;
+}
+
+.dot-pending {
+  background-color: orange;
+}
