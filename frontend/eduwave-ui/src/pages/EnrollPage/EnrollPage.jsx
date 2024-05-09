@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './EnrollPage.css'
 
+
 const EnrollPage = () => {
     const [courses, setCourses] = useState([]);
     const [message, setMessage] = useState('');
@@ -32,30 +33,32 @@ const EnrollPage = () => {
           alert('Enrollment successful!');
       } catch (error) {
           console.error('Error enrolling course:', error);
+          alert('Already enlisted in this course!');
       }
   };
   
   
 
-    return (
-        <div className="wholepage-enroll">
-            <Navbar />
-            <div className="course-container">
-                {courses.map(course => (
-                    <div key={course._id} className="course-card">
-                        <img src={course.file.secure_url} alt={course.name} className="course-image" />
-                        <div className="course-details">
-                            <h3 className="course-title">{course.name}</h3>
-                            <p className="course-description">{course.description}</p>
-                            <p className="course-price">Price: ${course.price}</p>
-                            <p className="course-owner">Owner: {course.owner}</p>
-                            <button className="enroll-button" onClick={() => handleEnroll(course)}>Enroll</button>
-                        </div>
+  return (
+    <div className='wholepage-enroll'>
+        <Navbar />
+        <div className="row stucourse-container">
+            {courses.map(course => (
+                <div key={course._id} className="col-lg-4 col-md-6 col-sm-12 stucourse-card">
+                    <img src={course.file.secure_url} alt={course.name} className="stucourse-image" />
+                    <div className="stucourse-details">
+                        <h3 className="stucourse-title">{course.name}</h3>
+                        <p className="stucourse-description">{course.description}</p>
+                        <p className="stucourse-price">Price: ${course.price}</p>
+                        <p className="stucourse-owner">Owner: {course.owner}</p>
+                        <button className="stuenroll-button" onClick={() => handleEnroll(course)}>Enroll Now</button>
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
-    );
+    </div>
+);
+
 };
 
 export default EnrollPage; 

@@ -1,5 +1,7 @@
+// CourseAdmin.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './CourseAdmin.css'; // Import CSS file
 
 const CourseAdmin = () => {
   const [courses, setCourses] = useState([]);
@@ -54,9 +56,10 @@ const CourseAdmin = () => {
   };
 
   return (
-    <div>
-      <h2>Admin Page</h2>
-      <table>
+    <div className="cadmin-container">
+      <h2 className="cadmin-heading">Admin Page</h2>
+      <div className='cadmin-cardView'>
+      <table className="cadmin-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -64,7 +67,8 @@ const CourseAdmin = () => {
             <th>Description</th>
             <th>Price</th>
             <th>Owner</th>
-            <th>Actions</th>
+            <th>Image</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -75,11 +79,12 @@ const CourseAdmin = () => {
               <td>{course.description}</td>
               <td>${course.price}</td>
               <td>{course.owner}</td>
+              <td><img src={course.file.secure_url} alt={course.name} /></td>
               <td>
                 {!course.isavailable && (
                   <>
-                    <button onClick={() => handleAccept(course._id)}>Accept</button>
-                    <button onClick={() => handleReject(course._id)}>Reject</button>
+                    <button className="cadmin-accept-btn" onClick={() => handleAccept(course._id)}>Accept</button>
+                    <button className="cadmin-reject-btn" onClick={() => handleReject(course._id)}>Reject</button>
                   </>
                 )}
               </td>
@@ -87,6 +92,7 @@ const CourseAdmin = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

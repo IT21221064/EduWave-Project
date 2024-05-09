@@ -1,6 +1,8 @@
+// CourseTutor.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CourseUpdatePopup from '../../components/Course/CourseUpdatePopup'; // Import the popup/modal component
+import './CourseTutor.css'; // Import CSS file for styling
 
 const CourseTutor = () => {
   const [courses, setCourses] = useState([]);
@@ -54,36 +56,39 @@ const CourseTutor = () => {
   };
 
   return (
-    <div className="course-container">
-      {filteredCourses.map(course => (
-        <div key={course._id} className="course-card">
-          <img src={course.file.secure_url} alt={course.name} />
-          <div className="course-details">
-            <h3>{course.name}</h3>
-            <p>{course.description}</p>
-            <p>Price: ${course.price}</p>
-            <button onClick={() => handleUpdate(course._id)}>Update</button>
-            <button onClick={() => handleDelete(course._id)}>Delete</button>
+    <div>
+      <h1>My Courses</h1>
+      <div className="ctutor-course-container">
+        {filteredCourses.map(course => (
+          <div key={course._id} className="ctutor-course-card">
+            <img src={course.file.secure_url} alt={course.name} className="ctutor-course-image" />
+            <div className="ctutor-course-details">
+              <h3>{course.name}</h3>
+              <p>{course.description}</p>
+              <p>Price: ${course.price}</p>
+              <br></br>
+              <div className="ctutor-course-buttons">
+                <button onClick={() => handleUpdate(course._id)}>Update</button>
+                <button onClick={() => handleDelete(course._id)}>Delete</button>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
 
-      {/* Render the popup/modal if showPopup is true */}
-      {showPopup && (
-        <CourseUpdatePopup
-          course={selectedCourse}
-          onClose={() => setShowPopup(false)} // Close the popup when onClose is triggered
-          onUpdate={(updatedCourse) => {
-            // Update the courses list with the updated course
-            const updatedCourses = courses.map(c => (c._id === updatedCourse._id ? updatedCourse : c));
-            setCourses(updatedCourses);
-          
-            setShowPopup(false);
-            window.location.reload()
-             // Close the popup after updating
-          }}
-        />
-      )}
+        {/* Render the popup/modal if showPopup is true */}
+        {showPopup && (
+          <CourseUpdatePopup
+            course={selectedCourse}
+            onClose={() => setShowPopup(false)} // Close the popup when onClose is triggered
+            onUpdate={(updatedCourse) => {
+              // Update the courses list with the updated course
+              const updatedCourses = courses.map(c => (c._id === updatedCourse._id ? updatedCourse : c));
+              setCourses(updatedCourses);
+              setShowPopup(false);
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 };
