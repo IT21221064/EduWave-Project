@@ -35,7 +35,9 @@ const PaymentDetails = () => {
         <div className="col-md-6">
           <div className="card mb-3">
             <div className="card-body">
-              <h5 className="card-title">Order Information</h5>
+              <div style={{ textAlign: "center" }}>
+                <h5 className="card-title">Order Information</h5>
+              </div>
               <p className="card-text">
                 <strong>Order ID:</strong> {payment.paymentID}
               </p>
@@ -64,7 +66,10 @@ const PaymentDetails = () => {
         <div className="col-md-6">
           <div className="card">
             <div className="card-body">
-              <h5 className="card-title">Payment Information</h5>
+              <div style={{ textAlign: "center" }}>
+                <h5 className="card-title">Payment Information</h5>
+              </div>
+
               <p className="card-text">
                 <strong>Payment Method:</strong> {payment.paymentMethod}
               </p>
@@ -72,11 +77,12 @@ const PaymentDetails = () => {
                 <strong>Course ID:</strong> {payment.courseID}
               </p>
               <p className="card-text">
-                <strong>Created At:</strong> {payment.createdAt}
+                <strong>Price:</strong> {payment.amount} {payment.currency}
               </p>
               <p className="card-text">
-                <strong>Transaction ID:</strong> {payment.transactionID}
+                <strong>Created At:</strong> {payment.createdAt}
               </p>
+
               <p className="card-text">
                 <strong>Updated At:</strong> {payment.updatedAt}
               </p>
