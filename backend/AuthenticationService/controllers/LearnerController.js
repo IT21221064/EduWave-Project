@@ -151,9 +151,10 @@ const loginStudent = async (req,res) => {
       const token = createToken(student._id)
       const userid = student._id
       const sid = student.StudentId
+      const email = student.email
       
   
-      res.status(200).json({username,token,userid,sid})
+      res.status(200).json({username,token,userid,sid,email})
   
   } catch(error){
       res.status(400).json({error:error.message})
