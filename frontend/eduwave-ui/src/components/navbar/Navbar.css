@@ -1,6 +1,6 @@
 .navbar-container {
     background-color: #333; /* Change the background color */
-    padding: 10px 20px;
+    padding: 0px 30px;
   }
   
   .navbar {
@@ -33,7 +33,7 @@
   }
   
   .nav-logo {
-    height: 60px; /* Adjust the logo height */
+    height: 75px; /* Adjust the logo height */
   }
   
   /* Style for the logout button */

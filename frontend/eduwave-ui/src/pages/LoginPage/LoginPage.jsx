@@ -9,7 +9,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:4000/api/Learner/login', {
+      const response = await fetch('http://localhost:4000/api/Admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, pw: password }),
@@ -26,7 +26,7 @@ const LoginPage = () => {
       localStorage.setItem('username', data.username);
       
       // Redirect or do something else upon successful login
-      window.location.href = '/enroll';
+      window.location.href = '/course-admin';
     } catch (error) {
       setError(error.message);
     }
