@@ -15,7 +15,7 @@ function Navbar() {
     <div className="navbar-container">
       <nav className="navbar">
         <Link to="/" className="navbar-brand">
-          <img className="nav-logo" src="/images/EYELogo.png" alt="Logo" />
+          <img className="nav-logo" src="/images/eduwave1.png" alt="Logo" />
         </Link>
         <ul className="nav">
           <li className="nav-item">
