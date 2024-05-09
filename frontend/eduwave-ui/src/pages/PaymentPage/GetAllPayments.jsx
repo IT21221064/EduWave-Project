@@ -21,8 +21,8 @@ const GetAllPayments = () => {
 
   return (
     <div className="admin-payment-list-container">
-      <div className="admin-payment-list-card">
-        <h1>Admin Payment List</h1>
+      <div className="admin-payment-list-main-card">
+        <h1>Admin Payments Page</h1>
         <br />
         <div className="admin-payment-list-card">
           <table className="admin-payment-list-table">
@@ -43,7 +43,19 @@ const GetAllPayments = () => {
                   <td>
                     {payment.amount} {payment.currency}
                   </td>
-                  <td>{payment.status}</td>
+                  <td>
+                    {payment.status}
+                    {"    "}
+                    {payment.status === "success" && (
+                      <div className="dot dot-success"></div>
+                    )}
+                    {payment.status === "fail" && (
+                      <div className="dot dot-fail"></div>
+                    )}
+                    {payment.status === "pending" && (
+                      <div className="dot dot-pending"></div>
+                    )}
+                  </td>
                   <td>
                     <Link
                       to={`/payment-details/${payment._id}`}
