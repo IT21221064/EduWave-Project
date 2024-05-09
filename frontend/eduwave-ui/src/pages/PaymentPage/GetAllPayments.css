@@ -1,0 +1,81 @@
+/* GetAllPayments.css */
+
+/* Custom styles */
+.admin-payment-list-container {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.admin-payment-list-card {
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+
+  background-color: #ffffff; /* White background */
+  width: 90%;
+  margin-left: 70px;
+  margin-bottom: 60px;
+}
+.admin-payment-list-main-card {
+  box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+
+  background-color: #ffffff; /* White background */
+  width: 100%;
+
+  margin-bottom: 60px;
+}
+
+.admin-payment-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* Ensure table borders collapse */
+}
+
+.admin-payment-list-table th,
+.admin-payment-list-table td {
+  padding: 12px; /* Increase padding for better spacing */
+  border-bottom: 1px solid #dee2e6; /* Add border between table rows */
+  text-align: center;
+}
+
+.admin-payment-list-table th {
+  background-color: #f8f9fa; /* Light gray background for table header */
+  font-weight: bold;
+}
+
+.admin-payment-list-table tbody tr:hover {
+  background-color: #f1f1f1; /* Light gray background on hover */
+}
+/* GetAllPayments.css */
+
+.view-button {
+  background: none;
+  border: 1px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: #007bff; /* Adjust color as needed */
+}
+
+.view-button:hover {
+  color: #0056b3; /* Adjust color as needed */
+}
+/* GetAllPayments.css */
+
+.view-link {
+  display: inline-block; /* Display link as block-level element */
+  text-decoration: none;
+  color: #007bff; /* Adjust color as needed */
+  border: 1px solid #007bff; /* Add border */
+  border-radius: 4px; /* Add border radius */
+  padding: 5px 10px; /* Add padding */
+  font-size: 14px; /* Adjust font size */
+  transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.view-link:hover {
+  background-color: #007bff; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}

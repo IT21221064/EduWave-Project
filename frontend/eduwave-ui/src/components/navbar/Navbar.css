@@ -1,0 +1,44 @@
+.navbar-container {
+    background-color: #333; /* Change the background color */
+    padding: 10px 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-brand {
+    text-decoration: none;
+    color: #fff; /* Change the text color */
+    font-size: 24px; /* Adjust the font size */
+  }
+  
+  .nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-item {
+    margin-right: 25px;
+  }
+  
+  .navtext {
+    text-decoration: none;
+    color: #fff; /* Change the text color */
+    font-size: 20px; /* Adjust the font size */
+  }
+  
+  .nav-logo {
+    height: 60px; /* Adjust the logo height */
+  }
+  
+  /* Style for the logout button */
+  .navtext:hover {
+    color: #b9b9b9; /* Change the text color on hover */
+  }
+
+  
