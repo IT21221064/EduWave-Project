@@ -32,9 +32,9 @@ services:
       context: ./PaymentService
       dockerfile: Dockerfile
     ports:
-      - "5001:5001"
+      - "5006:5006"
     environment:
-      - PORT=5001
+      - PORT=5006
       - MONGO_URI=mongodb+srv://eduwave11:027u4p2OHjPJEY07@cluster0.yazy0gh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       - SECRET=nhnhnskfalhfksahkhffalfaalf
     depends_on:
