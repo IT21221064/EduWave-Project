@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './SignupPage.css';
+import { Link } from 'react-router-dom';
 
 const StuRegister = () => {
     const [formData, setFormData] = useState({
@@ -8,6 +10,7 @@ const StuRegister = () => {
         username: '',
         pw: ''
     });
+    const [error, setError] = useState('');
 
     const { Name, email, username, pw } = formData;
     const navigate = useNavigate();
@@ -41,34 +44,44 @@ const StuRegister = () => {
           console.log('Learner registered successfully:', data);
           navigate('/slogin');
       } catch (error) {
-          console.error('Error registering learner:', error.message);
+          setError( error.message);
       }
   };
   
   
 
     return (
-        <div>
+        <div className='signupbackground'>
+        <div className='login-container'>
             <h2>Register as a Learner</h2>
+            {error && <p className="error-message">{error}</p>}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name:</label>
-                    <input type="text" name="Name" value={Name} onChange={handleChange} />
+                <div className="form-group">
+                    <label className='loginlabel'>Name:</label>
+                    <input type="text" className="input-field" name="Name" value={Name} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" name="email" value={email} onChange={handleChange} />
+                <div className="form-group">
+                    <label className='loginlabel'>Email:</label>
+                    <input type="email"  className="input-field" name="email" value={email} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Username:</label>
-                    <input type="text" name="username" value={username} onChange={handleChange} />
+                <div className="form-group">
+                    <label className='loginlabel'>Username:</label>
+                    <input type="text"  className="input-field" name="username" value={username} onChange={handleChange} />
                 </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" name="pw" value={pw} onChange={handleChange} />
+                <div className="form-group">
+                    <label className='loginlabel'>Password:</label>
+                    <input type="password"  className="input-field" name="pw" value={pw} onChange={handleChange} />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" className="login-button">Register</button>
+                <p className='logintext'>Already have an account ?</p>
+                    <Link to="/slogin">
+                    <button className="signupbtn">Login</button>
+                    </Link>
+                    <Link to="/">
+                        <button className="welcbtn">Go Back</button>
+                    </Link>
             </form>
+        </div>
         </div>
     );
 };
