@@ -21,10 +21,11 @@ import CourseAdmin from "./pages/CourseAdminPage/CourseAdmin";
 import PaymentDetails from "./pages/PaymentPage/PaymentDetails";
 
 import CourseTutor from "./pages/CourseTutorPage/CourseTutor";
+
 import WelcomePage from "./pages/SignupPage/WelcomePage";
 
-import MyNotificationsPage from "./pages/NotificationPage/MyNotificationsPage";
 
+import MyNotificationsPage from "./pages/NotificationPage/MyNotificationsPage";
 
 function App() {
   return (
@@ -49,8 +50,7 @@ function App() {
 
         <Route path="/mystucourse" element={<StuMyCourse />} />
 
-        <Route path="/my-notifications" element={<MyNotificationsPage/>}/>
-
+        <Route path="/my-notifications" element={<MyNotificationsPage />} />
       </Routes>
     </Router>
   );
