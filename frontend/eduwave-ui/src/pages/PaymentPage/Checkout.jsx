@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 import {
   Payhere,
   AccountCategory,
@@ -12,19 +13,22 @@ import "./Checkout.css"; // Import CSS file
 
 const Checkout = () => {
   const [id, setId] = useState(null); // Define id state variable
+  const location = useLocation(); // Use useLocation hook to access location object
+  const courseId = location.state ? location.state.courseId : null;
+  const [course, setCourse] = useState({});
 
   useEffect(() => {
     // Initialize PayHere
     Payhere.init(1226643, AccountCategory.SANDBOX); // Replace XXXX with your merchant ID
     const userId = localStorage.getItem("userid"); // Use a different name for clarity
-
+    setId(userId);
+    console.log("Course ID:", courseId); // Display courseId using console.log
     const fetchData = async () => {
       try {
         const response = await axios.get(
           `http://localhost:4000/api/Learner/${userId}`
         );
         setCustomerAttributes(response.data);
-        setId(userId); // Set the id state variable
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
@@ -42,13 +46,13 @@ const Checkout = () => {
     email: "",
     address: "",
     city: "",
-    country: "", // Default country
+    country: "Sri lanka", // Default country
   });
 
   const generateUniqueOrderId = () => {
     const timestamp = new Date().getTime().toString();
     const uniqueId = Math.random().toString(36).substr(2, 9); // Random alphanumeric string
-    return `${timestamp}_${uniqueId}`;
+    return `${timestamp}:${uniqueId}`;
   };
 
   const [checkoutAttributes, setCheckoutAttributes] = useState({
@@ -57,11 +61,32 @@ const Checkout = () => {
     notifyUrl: "http://localhost:5006/api/payment/notify",
     order_id: generateUniqueOrderId(),
     items: "Door bell wireless",
+    courseID: "",
     currency: "LKR",
     amount: "1000", // Amount as a string
     merchant_id: 1226643, // Replace XXXX with your merchant ID
     merchant_secret: "MjM3ODE4NDE0MzU5NzQ4NTM4MzI4NTAzMTE3NjUyODA1MzY4MjIw", // Replace with your merchant secret
   });
+  const fetchCourseData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5002/api/course/${courseId}`
+      );
+      setCourse(response.data); // Set the course details fetched from the API
+      setCheckoutAttributes((prevAttributes) => ({
+        ...prevAttributes,
+        items: response.data.name,
+        amount: response.data.price,
+      }));
+    } catch (error) {
+      console.error("Error fetching course details:", error);
+    }
+  };
+  useEffect(() => {
+    if (courseId) {
+      fetchCourseData();
+    }
+  }, [courseId]);
 
   useEffect(() => {
     const amountFormatted = parseFloat(checkoutAttributes.amount)
@@ -105,14 +130,13 @@ const Checkout = () => {
 
   const addPayment = async () => {
     try {
-      debugger;
       await axios.post("http://localhost:5006/api/payment/add", {
         paymentID: checkoutAttributes.order_id,
         userID: id, // Use the id state variable here
         amount: checkoutAttributes.amount,
         currency: checkoutAttributes.currency,
         paymentMethod: "Payhere",
-        courseID: "1234",
+        courseID: courseId,
         billingFirstName: customerAttributes.first_name,
         billingLastName: customerAttributes.last_name,
         billingPhone: customerAttributes.phone,
@@ -132,6 +156,7 @@ const Checkout = () => {
         <div className="col-md-8">
           <div className="payment-form-card">
             <div className="card-body">
+              <p>Selected Course ID: {courseId}</p>
               <h5 className="card-title">Customer Details</h5>
               <form
                 method="post"
