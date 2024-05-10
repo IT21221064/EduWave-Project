@@ -28,7 +28,7 @@ const TutLoginPage = () => {
       localStorage.setItem('userid', data.userid);
       localStorage.setItem('username', data.username);
       // Redirect or do something else upon successful login
-      window.location.href = '/enroll';
+      window.location.href = '/course-home';
     } catch (error) {
       setError(error.message);
     }
