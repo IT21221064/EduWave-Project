@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import './Navbar.css'
+import "./Navbar.css";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -25,11 +25,12 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link to="/enroll" className="navtext">
-            Courses
+              Courses
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/mystucourse" className="navtext">My Courses
+            <Link to="/mystucourse" className="navtext">
+              My Courses
             </Link>
           </li>
           <li className="nav-item">
