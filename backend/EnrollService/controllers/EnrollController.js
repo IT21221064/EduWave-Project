@@ -81,11 +81,33 @@ const deleteEnroll = async (req, res) => {
       res.status(500).json({ message: "Internal Server Error" });
   }
 };
+const updateEnroll = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updateData = req.body;
+  
+      const updatedEnroll = await Enroll.findByIdAndUpdate(req.params.id, updateData, {
+        new: true
+      });
+  
+      if (!updatedEnroll) {
+        return res.status(404).json({ message: "Enrollment not found" });
+      }
+  
+      res.status(200).json({ message: "Enrollment updated successfully", enrollment: updatedEnroll });
+    } catch (error) {
+      console.error("Error updating enrollment:", error);
+      res.status(500).json({ message: "Server Error - Unable to update enrollment" });
+    }
+  };
+  
+  
 
 
 module.exports = {
     addEnroll,
     getEnrolls,
     getEnrollsByUser,
-    deleteEnroll
+    deleteEnroll,
+    updateEnroll
 };

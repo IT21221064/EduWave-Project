@@ -1,6 +1,6 @@
 
   .signupbackground {
-    background-image: url('../../../public/images/loginb.jpg');
+    background-image: url('../../../public/images/books.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -23,18 +23,19 @@
   
   
   .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 8px !important;
   }
   
   .loginlabel{
     font-size: 18px;
     display: block;
     margin-bottom: 5px;
+    color: rgb(255, 255, 255) !important;
   }
   
   .input-field {
     width: 95%;
-    padding: 8px;
+    padding: 4px !important;
     border-radius: 3px;
     border: 1px solid #ccc;
   }

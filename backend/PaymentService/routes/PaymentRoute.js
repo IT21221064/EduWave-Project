@@ -12,7 +12,7 @@ router.get("/", paymentController.getAllPayments);
 router.get("/:id", paymentController.getPaymentById);
 
 // Route for handling payment notification
-router.post("/notify", paymentController.handleNotify);
+router.put("/notify/:id", paymentController.handleNotify);
 
 // Route for handling return URL
 router.get("/return", paymentController.handleReturn);
