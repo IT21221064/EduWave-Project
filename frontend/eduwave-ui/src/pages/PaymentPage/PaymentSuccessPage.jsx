@@ -1,0 +1,73 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const PaymentSuccessDetails = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const order_Id = searchParams.get("order_id");
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState("");
+
+  const [courseId, setCourseId] = useState("");
+  const [courseName, setCourseName] = useState("");
+
+  useEffect(() => {
+    console.log(order_Id);
+    axios
+      .put(`http://localhost:5006/api/payment/notify/${order_Id}`)
+      .then((response) => {
+        console.log(response.data);
+        setEmail(response.data.data.billingEmail);
+        setCourseId(response.data.data.courseID);
+        setCourseName(response.data.courseName);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching payment details:", error);
+        setLoading(false);
+      });
+  }, [order_Id]);
+
+  const handleEnrollButtonClick = async () => {
+    try {
+      const userid = localStorage.getItem("userid");
+      console.log(email);
+      axios.post("http://localhost:5000/enroll", {
+        userid,
+        courseId,
+      });
+
+      const emailResponse = await axios.post(
+        "http://localhost:5003/api/send-email",
+        {
+          email,
+          courseName,
+        }
+      );
+
+      console.log(emailResponse.data.message);
+      alert("Enrollment successful!");
+    } catch (error) {
+      console.error("Error enrolling course:", error);
+      alert("Already enlisted in this course!");
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="container">
+      <h1 className="text-center my-4">
+        Payment Success : You have successfully enrolled to the course
+      </h1>
+      <button onClick={handleEnrollButtonClick}>Enroll</button>
+    </div>
+  );
+};
+
+export default PaymentSuccessDetails;

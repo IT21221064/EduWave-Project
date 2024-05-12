@@ -85,31 +85,31 @@ exports.getPaymentById = async (req, res) => {
 
 exports.handleNotify = async (req, res) => {
   try {
-    const {
-      merchant_id,
-      order_id,
-      payhere_amount,
-      payhere_currency,
-      status_code,
-      md5sig,
-    } = req.body;
-    console.log("Received merchant_id:", merchant_id);
-    console.log("Received order_id:", order_id);
-    console.log("Received payhere_amount:", payhere_amount);
-    console.log("Received payhere_currency:", payhere_currency);
-    console.log("Received status_code:", status_code);
-    console.log("Received md5sig:", md5sig);
+    const { id } = req.params;
 
-    const localMd5Sig = md5(`${merchant_id}`).toUpperCase();
-    console.log("Generated Hash: " + localMd5Sig);
-    console.log("Generated fHash: " + md5sig);
+    // Find the payment by paymentID instead of _id
+    const payment = await Payment.findOne({ paymentID: id });
 
-    // Update database with payment status
-    await Payment.updateOne({ paymentID: order_id }, { status: "success" });
-    res.json({ success: true }); // Send a success response
+    // If payment is not found, return a 404 response
+    if (!payment) {
+      return res
+        .status(404)
+        .json({ success: false, error: "Payment not found" });
+    }
+
+    // Update the status of the found payment to "success"
+    payment.status = "success";
+
+    // Save the updated payment object
+    await payment.save();
+
+    // Return success response with updated payment data
+    return res.status(200).json({ success: true, data: payment });
   } catch (error) {
-    console.error("Error handling payment notification:", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    console.error("Error updating payment status:", error);
+    return res
+      .status(500)
+      .json({ success: false, error: "Internal Server Error" });
   }
 };
 
