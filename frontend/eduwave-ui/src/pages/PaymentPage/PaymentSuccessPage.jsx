@@ -9,9 +9,9 @@ const PaymentSuccessDetails = () => {
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
-  const [email, setEmail] = useState("");
+  const [studentEmail, setEmail] = useState("");
 
-  const [courseId, setCourseId] = useState("");
+  const [course, setCourseId] = useState("");
   const [courseName, setCourseName] = useState("");
 
   useEffect(() => {
@@ -34,16 +34,16 @@ const PaymentSuccessDetails = () => {
   const handleEnrollButtonClick = async () => {
     try {
       const userid = localStorage.getItem("userid");
-      console.log(email);
-      axios.post("http://localhost:5000/enroll", {
+      console.log(studentEmail);
+      axios.post("http://localhost:5005/enroll", {
         userid,
-        courseId,
+        course,
       });
 
       const emailResponse = await axios.post(
-        "http://localhost:5003/api/send-email",
+        "http://localhost:5003/api/email/send-email",
         {
-          email,
+          studentEmail,
           courseName,
         }
       );
