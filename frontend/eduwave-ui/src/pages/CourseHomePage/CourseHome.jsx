@@ -1,4 +1,5 @@
 // CourseHome.js
+import Navbar from "../../components/navbar/Navbar";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +7,6 @@ import "./CourseHome.css"; // Import CSS file for styling
 
 const CourseHome = () => {
   const [courses, setCourses] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
   const [selectedCourseId, setSelectedCourseId] = useState(null);
 
@@ -24,18 +24,6 @@ const CourseHome = () => {
     fetchCourses();
   }, []);
 
-  // Filter courses based on search query
-  const filteredCourses = courses.filter((course) => {
-    return (
-      course.isavailable &&
-      course.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  });
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
   const handleEnroll = (courseId) => {
     setSelectedCourseId(courseId);
     console.log("Selected Course ID:", courseId); // Check if courseId is correct
@@ -43,38 +31,24 @@ const CourseHome = () => {
   };
 
   return (
-    <div className="chome-container">
-      <div>
-        <input
-          type="text"
-          placeholder="Search courses..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="chome-search-input"
-        />
-      </div>
-      <br />
-      <div className="chome-course-container">
-        {filteredCourses.map((course) => (
-          <div key={course._id} className="chome-course-card">
+    <div className="wholepage-enroll">
+      <Navbar />
+      <div className="row stucourse-container">
+        {courses.map((course) => (
+          <div
+            key={course._id}
+            className="col-lg-4 col-md-6 col-sm-12 stucourse-card"
+          >
             <img
               src={course.file.secure_url}
               alt={course.name}
-              className="chome-course-image"
+              className="stucourse-image"
             />
-            <div className="chome-course-details">
-              <h3 className="chome-course-title">{course.name}</h3>
-              <p className="chome-course-description">
-                Description:{course.description}
-              </p>
-              <p className="chome-course-price">Price: ${course.price}</p>
-              <p className="chome-course-owner">by: {course.owner}</p>
-              <button
-                className="enroll-button"
-                onClick={() => handleEnroll(course._id)}
-              >
-                ENROLL NOW
-              </button>
+            <div className="stucourse-details">
+              <h3 className="stucourse-title">{course.name}</h3>
+              <p className="stucourse-description">{course.description}</p>
+              <p className="stucourse-price">Price: ${course.price}</p>
+              <p className="stucourse-owner">Owner: {course.owner}</p>
             </div>
           </div>
         ))}
