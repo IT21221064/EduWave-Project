@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 const SignupPage = () => {
     
   const [formData, setFormData] = useState({
-    Name: '',
+    name: '',
     email: '',
     username: '',
     pw: ''
 });
 const [error, setError] = useState('');
 
-const { Name, email, username, pw } = formData;
+const { name, email, username, pw } = formData;
 const navigate = useNavigate();
 
 const handleChange = (e) => {
@@ -29,7 +29,7 @@ const handleSubmit = async (e) => {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              Name: formData.Name,
+              name: formData.name,
               email: formData.email,
               username: formData.username,
               pw: formData.pw
@@ -59,7 +59,7 @@ return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label className='loginlabel'>Name:</label>
-                <input type="text" className="input-field" name="Name" value={Name} onChange={handleChange} />
+                <input type="text" className="input-field" name="Name" value={name} onChange={handleChange} />
             </div>
             <div>
                 <label className='loginlabel'>Email:</label>

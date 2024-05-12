@@ -27,8 +27,8 @@ const EnrollPage = () => {
           const userid = localStorage.getItem('userid');
           const email = localStorage.getItem('email')
           await axios.post('http://localhost:5000/enroll', { userid, course: course._id });
-          const response = await axios.post('http://localhost:5003/api/send-email', { email, courseName: course.name });
-          setMessage(response.data.message);
+          //const response = await axios.post('http://localhost:5003/api/send-email', { email, courseName: course.name });
+          //setMessage(response.data.message);
 
           alert('Enrollment successful!');
       } catch (error) {

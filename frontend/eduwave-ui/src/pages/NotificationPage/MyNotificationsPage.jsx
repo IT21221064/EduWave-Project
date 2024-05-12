@@ -28,12 +28,14 @@ const MyNotificationsPage = () => {
     <div className='container'>
       <h2>My Notifications</h2>
       <ul>
+        <div className='notify-container'>
         {notifications.map(notification => (
           <li key={notification._id} className='notification'>
             <h3>{notification.title}</h3>
             <p>{notification.description}</p>
           </li>
         ))}
+        </div>
       </ul>
     </div>
   );
