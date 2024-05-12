@@ -153,7 +153,6 @@ const Checkout = () => {
 
   const addPayment = async () => {
     try {
-      debugger;
       await axios.post("http://localhost:5006/api/payment/add", {
         paymentID: payId,
         userID: id, // Use the id state variable here
