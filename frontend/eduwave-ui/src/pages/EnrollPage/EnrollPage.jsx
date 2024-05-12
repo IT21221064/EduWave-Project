@@ -7,6 +7,7 @@ import "./EnrollPage.css";
 const EnrollPage = () => {
   const [courses, setCourses] = useState([]);
   const navigate = useNavigate();
+  const [selectedCourseId, setSelectedCourseId] = useState(null);
 
   useEffect(() => {
     // Fetch course data from the API
@@ -22,20 +23,10 @@ const EnrollPage = () => {
     fetchCourses();
   }, []);
 
-  const handleEnroll = async (course) => {
-    try {
-      const userid = localStorage.getItem("userid");
-      await axios.get("http://localhost:5005/enroll", {
-        userid,
-        course: course._id,
-      });
-
-      alert("already enlisted to this course!");
-    } catch (error) {
-      console.error("Error enrolling course:", error);
-      alert("redirecting to payments!");
-      navigate("/payments");
-    }
+  const handleEnroll = (courseId) => {
+    setSelectedCourseId(courseId);
+    console.log("Selected Course ID:", courseId); // Check if courseId is correct
+    navigate("/checkout", { state: { courseId: courseId } });
   };
 
   return (
@@ -59,7 +50,7 @@ const EnrollPage = () => {
               <p className="stucourse-owner">Owner: {course.owner}</p>
               <button
                 className="stuenroll-button"
-                onClick={() => handleEnroll(course)}
+                onClick={() => handleEnroll(course._id)}
               >
                 Enroll Now
               </button>
