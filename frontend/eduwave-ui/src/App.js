@@ -22,9 +22,10 @@ import PaymentDetails from "./pages/PaymentPage/PaymentDetails";
 
 import CourseTutor from "./pages/CourseTutorPage/CourseTutor";
 
+import WelcomePage from "./pages/SignupPage/WelcomePage";
+
 
 import MyNotificationsPage from "./pages/NotificationPage/MyNotificationsPage";
-
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
         <Route path="/my-payments" element={<MyPaymentsPage />} />
         <Route path="/payment-details/:id" element={<PaymentDetails />} />
         <Route path="/payments" element={<GetAllPayments />} />
-
+        <Route path="/" element={<WelcomePage/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<StuRegister />} />
         <Route path="/slogin" element={<StuLoginPage />} />
@@ -49,8 +50,7 @@ function App() {
 
         <Route path="/mystucourse" element={<StuMyCourse />} />
 
-        <Route path="/my-notifications" element={<MyNotificationsPage/>}/>
-
+        <Route path="/my-notifications" element={<MyNotificationsPage />} />
       </Routes>
     </Router>
   );
