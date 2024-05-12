@@ -1,33 +1,24 @@
-/* MyNotificationsPage.css */
+.container h2{
+  text-align: center;
+  margin: 20px;
 
-/* Container styles */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+}
+
+.notify-container{
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px 20px 20px 40px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  animation: slideInFromBottom 1s ease-in-out;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+      transform: translateY(100%);
+      opacity: 0;
   }
-  
-  /* Heading styles */
-  h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  100% {
+      transform: translateY(0);
+      opacity: 1;
   }
-  
-  /* Notification item styles */
-  .notification {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .notification h3 {
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  
-  .notification p {
-    font-size: 14px;
-    color: #666;
-  }
-  
+}

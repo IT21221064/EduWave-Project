@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
+
     name: "",
     email: "",
     username: "",
@@ -15,9 +16,11 @@ const SignupPage = () => {
   const { name, email, username, pw } = formData;
   const navigate = useNavigate();
 
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +36,7 @@ const SignupPage = () => {
           username: formData.username,
           pw: formData.pw,
         }),
+
       });
 
       if (!response.ok) {
@@ -54,6 +58,7 @@ const SignupPage = () => {
         <h2>Register as a Learner</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
+
           <div>
             <label className="loginlabel">Name:</label>
             <input
@@ -99,6 +104,7 @@ const SignupPage = () => {
           </button>
           <p className="logintext">Already have an account ?</p>
           <Link to="/tlogin">
+
             <button className="signupbtn">Login</button>
           </Link>
           <Link to="/">

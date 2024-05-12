@@ -12,8 +12,18 @@ const EnrollPage = () => {
     // Fetch course data from the API
     const fetchCourses = async () => {
       try {
+
+          const userid = localStorage.getItem('userid');
+          const email = localStorage.getItem('email')
+          await axios.post('http://localhost:5000/enroll', { userid, course: course._id });
+          //const response = await axios.post('http://localhost:5003/api/send-email', { email, courseName: course.name });
+          //setMessage(response.data.message);
+
+          alert('Enrollment successful!');
+
         const response = await axios.get("http://localhost:5002/api/course");
         setCourses(response.data); // Update courses state with the fetched data
+
       } catch (error) {
         console.error("Error fetching courses:", error);
       }
