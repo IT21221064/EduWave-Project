@@ -7,7 +7,7 @@ import './Navbar.css'
 function Navbar() {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/welcome");
+    navigate("/");
     console.log("logout");
   };
 
@@ -34,7 +34,7 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link
-              to="/welcome"
+              to="/"
               className="navtext"
               onClick={(e) => {
                 e.preventDefault();
