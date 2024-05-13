@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MyNotificationsPage.css";
 import Navbar from "../../components/navbar/TNavbar";
+import Footer from "../../components/footer/Footer";
 
 const MyNotificationsPage = () => {
   const [notifications, setNotifications] = useState([]);
@@ -65,6 +66,7 @@ const MyNotificationsPage = () => {
           ))}
         </ul>
       </div>
+      <Footer />
     </>
   );
 };
