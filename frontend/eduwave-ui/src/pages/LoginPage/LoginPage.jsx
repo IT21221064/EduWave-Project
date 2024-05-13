@@ -26,7 +26,7 @@ const LoginPage = () => {
       localStorage.setItem('username', data.username);
       
       // Redirect or do something else upon successful login
-      window.location.href = '/course-admin';
+      window.location.href = '/admin-home';
     } catch (error) {
       setError(error.message);
     }
