@@ -15,25 +15,21 @@ function Navbar() {
     <div className="navbar-container">
       <nav className="navbar">
         <Link to="/" className="navbar-brand">
-          <img className="nav-logo" src="/images/EYELogo.png" alt="Logo" />
+          <img className="nav-logo" src="/images/eduwavelogo.png" alt="Logo" />
         </Link>
         <ul className="nav">
           <li className="nav-item">
-            <Link to="/my-payments" className="navtext">
-              My payments
+            <Link to="/course-home" className="navtext">
+              COURSES
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/enroll" className="navtext">
-            Courses
+            <Link to="/course-tutor" className="navtext">
+            MY COURSES
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/mystucourse" className="navtext">My Courses
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/mystucourse" className="navtext">Notifications
+            <Link to="/my-notifications" className="navtext">NOTIFICATION
             </Link>
           </li>
           <li className="nav-item">
@@ -45,7 +41,7 @@ function Navbar() {
                 handleClick();
               }}
             >
-              <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+              <FontAwesomeIcon icon={faSignOutAlt} /> LOGOUT
             </Link>
           </li>
         </ul>

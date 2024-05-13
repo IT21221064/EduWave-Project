@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './UploadCourse.css'; // Import CSS file
+import Navbar from '../../components/navbar/TNavbar';
 
 const UploadCourse = () => {
   const [id, setId] = useState("");
@@ -139,6 +140,8 @@ const UploadCourse = () => {
   };
 
   return (
+    <div className='base-contaier'>
+  <Navbar/>
     <div className="course-upload-container">
       <form className="course-upload-form" onSubmit={handleSubmit}>
         <h3>Upload Course</h3>
@@ -233,6 +236,7 @@ const UploadCourse = () => {
           <p>Course image upload preview will appear here!</p>
         )}
       </div>
+    </div>
     </div>
   );
 };

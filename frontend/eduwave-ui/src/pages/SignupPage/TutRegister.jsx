@@ -51,7 +51,7 @@ const SignupPage = () => {
   return (
     <div className="signupbackground">
       <div className="login-container">
-        <h2>Register as a Learner</h2>
+        <h2>Register as a Tutor</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div>

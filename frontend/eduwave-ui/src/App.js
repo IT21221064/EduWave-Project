@@ -31,26 +31,26 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/enroll" element={<EnrollPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/my-payments" element={<MyPaymentsPage />} />
-        <Route path="/payment-details/:id" element={<PaymentDetails />} />
-        <Route path="/notify" element={<PaymentSuccessDetails />} />
+        <Route path="/enroll" element={<EnrollPage />} /> --
+        <Route path="/payment" element={<PaymentPage />} /> --
+        <Route path="/checkout" element={<Checkout />} /> --
+        <Route path="/my-payments" element={<MyPaymentsPage />} /> --
+        <Route path="/payment-details/:id" element={<PaymentDetails />} />--
+        <Route path="/notify" element={<PaymentSuccessDetails />} /> --
 
-        <Route path="/payments" element={<GetAllPayments />} />
-        <Route path="/" element={<WelcomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<StuRegister />} />
-        <Route path="/slogin" element={<StuLoginPage />} />
-        <Route path="/tlogin" element={<TutLoginPage />} />
-        <Route path="/tregister" element={<TutRegister />} />
-        <Route path="/course-upload" element={<UploadCourse />} />
-        <Route path="/course-home" element={<CourseHome />} />
+        <Route path="/payments" element={<GetAllPayments />} />--
+        <Route path="/" element={<WelcomePage />} />  --
+        <Route path="/login" element={<LoginPage />} /> --
+        <Route path="/register" element={<StuRegister />} /> --
+        <Route path="/slogin" element={<StuLoginPage />} /> --
+        <Route path="/tlogin" element={<TutLoginPage />} /> --
+        <Route path="/tregister" element={<TutRegister />} /> --
+        <Route path="/course-upload" element={<UploadCourse />} /> 
+        <Route path="/course-home" element={<CourseHome />} /> --
         <Route path="/course-admin" element={<CourseAdmin />} />
         <Route path="/course-tutor" element={<CourseTutor />} />
 
-        <Route path="/mystucourse" element={<StuMyCourse />} />
+        <Route path="/mystucourse" element={<StuMyCourse />} /> --
 
         <Route path="/my-notifications" element={<MyNotificationsPage />} />
       </Routes>

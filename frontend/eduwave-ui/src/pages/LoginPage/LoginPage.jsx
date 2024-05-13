@@ -33,30 +33,34 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className='signupbackground'>
+      <div className="login-container">
       <h2>Admin Login</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username" className='loginlabel'>Username:</label>
           <input
             type="text"
             id="username"
+            className='input-field'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password" className='loginlabel'>Password:</label>
           <input
             type="password"
             id="password"
+            className='input-field'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className='login-button'>Login</button>
       </form>
+      </div>
     </div>
   );
 };

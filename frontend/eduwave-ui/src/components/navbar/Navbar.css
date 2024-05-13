@@ -1,44 +1,50 @@
 .navbar-container {
-    background-color: #333; /* Change the background color */
-    padding: 0px 30px;
-  }
-  
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-brand {
-    text-decoration: none;
-    color: #fff; /* Change the text color */
-    font-size: 24px; /* Adjust the font size */
-  }
-  
-  .nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .nav-item {
-    margin-right: 25px;
-  }
-  
-  .navtext {
-    text-decoration: none;
-    color: #fff; /* Change the text color */
-    font-size: 20px; /* Adjust the font size */
-  }
-  
-  .nav-logo {
-    height: 75px; /* Adjust the logo height */
-  }
-  
-  /* Style for the logout button */
-  .navtext:hover {
-    color: #b9b9b9; /* Change the text color on hover */
-  }
+  background-color: #000000; /* Change the background color */
+  padding: 0px 80px;
+  opacity: 0.9;
+}
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   
+}
+
+.nav-item {
+  color: #faf9f9;
+  padding: 14px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: 0;
+  position: relative; /* Ensure the position context for the pseudo-element */
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0; /* Initial width of the underline */
+  height: 2px;
+  background-color: #faf9f9; /* Underline color */
+  transition: width 0.3s ease; /* Transition effect */
+}
+
+.nav-item:hover::after {
+  width: 100%; /* Change width to 100% on hover */
+}
+
+.navtext {
+  font-family: "Alice", serif;
+  text-decoration: none;
+  color: #fff; /* Change the text color */
+  font-size: 16px; /* Adjust the font size */
+  position: relative; /* Ensure the position context for the pseudo-element */
+}
+
+
+
+.nav-logo {
+  height: 75px; /* Adjust the logo height */
+}
