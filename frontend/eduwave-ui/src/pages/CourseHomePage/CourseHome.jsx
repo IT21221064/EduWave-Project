@@ -39,7 +39,7 @@ const CourseHome = () => {
       } else {
         return a.price - b.price;
       }
-    });
+    }); 
     setFilteredCourses(sortedCourses);
   }, [courses, sortByPrice]);
 
