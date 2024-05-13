@@ -4,6 +4,7 @@ import axios from 'axios';
 import './CoursePopup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCircleXmark} from '@fortawesome/free-solid-svg-icons'
+import swal from "sweetalert";
 
 
 const CourseUpdatePopup = ({ course, onClose, onUpdate }) => {
@@ -26,8 +27,10 @@ const CourseUpdatePopup = ({ course, onClose, onUpdate }) => {
     try {
       const response = await axios.put(`http://localhost:5002/api/course/${course._id}`, updatedCourseData);
       onUpdate(response.data); // Update the course list with the updated course
+     
       window.location.reload();
-      onClose(); // Close the popup after successful update
+      onClose();
+       swal("Success!", "Course uploaded successfully!", "success"); // Close the popup after successful update
     } catch (error) {
       console.error('Error updating course:', error);
       // Handle error state
