@@ -128,14 +128,17 @@ const StuMyCourse = () => {
                     <a href={course.videolink}>{course.videolink}</a>
                   </p>
                 </div>
-                <button className="btn btn-primary">Un-Enroll</button>
+                <button className="stuunenroll">Un-Enroll</button>
                 <br />
-                <input
-                  type="checkbox"
-                  onChange={() => handleCheckboxChange(course)}
-                  disabled={course.status === "completed"}
-                  className="course-checkbox"
-                />
+                <div className="student-course-status-container">
+                  <p className="student-course-status">Completed : </p>
+                  <input
+                    type="checkbox"
+                    onChange={() => handleCheckboxChange(course)}
+                    disabled={course.status === "completed"}
+                    className="course-checkboxxx"
+                  />
+                </div>
               </div>
             </div>
           </div>
