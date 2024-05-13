@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import "./GetAllPayments.css";
+import Navbar from "../../components/navbar/AdminNavbar";
 
 const GetAllPayments = () => {
   const [payments, setPayments] = useState([]);
@@ -45,69 +46,71 @@ const GetAllPayments = () => {
       : payments;
 
   return (
-    <div className="">
-      <h1>All Payments</h1>
-      <div className="search-bar-container ">
-        <input
-          type="text"
-          className="form-control search-form-control "
-          placeholder="Search by Order ID"
-          value={searchOrderId}
-          onChange={(e) => setSearchOrderId(e.target.value)}
-        />
-        <input
-          type="date"
-          value={filterDate}
-          onChange={(e) => setFilterDate(e.target.value)}
-          className="form-control search-form-control"
-        />
-      </div>
-      <div className="admin-payment-list-card">
-        <table className="admin-payment-list-table">
-          <thead>
-            <tr>
-              <th>Order ID</th>
-              <th>Paid Date</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredPayments.map((payment) => (
-              <tr key={payment._id}>
-                <td>{payment.paymentID}</td>
-                <td>{new Date(payment.timestamp).toLocaleDateString()}</td>
-                <td>
-                  {payment.amount} {payment.currency}
-                </td>
-                <td>
-                  {payment.status}
-                  {"    "}
-                  {payment.status === "success" && (
-                    <div className="dot dot-success"></div>
-                  )}
-                  {payment.status === "fail" && (
-                    <div className="dot dot-fail"></div>
-                  )}
-                  {payment.status === "pending" && (
-                    <div className="dot dot-pending"></div>
-                  )}
-                </td>
-                <td>
-                  <Link
-                    to={`/payment-details/${payment._id}`}
-                    className="view-link"
-                  >
-                    <FontAwesomeIcon icon={faEye} />
-                  </Link>
-                </td>
+    <>
+      <Navbar />
+      <div className="">
+        <div className="search-bar-container ">
+          <input
+            type="text"
+            className="form-control search-form-control "
+            placeholder="Search by Order ID"
+            value={searchOrderId}
+            onChange={(e) => setSearchOrderId(e.target.value)}
+          />
+          <input
+            type="date"
+            value={filterDate}
+            onChange={(e) => setFilterDate(e.target.value)}
+            className="form-control search-form-control"
+          />
+        </div>
+        <div className="admin-payment-list-card">
+          <table className="admin-payment-list-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Paid Date</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredPayments.map((payment) => (
+                <tr key={payment._id}>
+                  <td>{payment.paymentID}</td>
+                  <td>{new Date(payment.timestamp).toLocaleDateString()}</td>
+                  <td>
+                    {payment.amount} {payment.currency}
+                  </td>
+                  <td>
+                    {payment.status}
+                    {"    "}
+                    {payment.status === "success" && (
+                      <div className="dot dot-success"></div>
+                    )}
+                    {payment.status === "fail" && (
+                      <div className="dot dot-fail"></div>
+                    )}
+                    {payment.status === "pending" && (
+                      <div className="dot dot-pending"></div>
+                    )}
+                  </td>
+                  <td>
+                    <Link
+                      to={`/admin-payment-details/${payment._id}`}
+                      className="view-link"
+                    >
+                      <FontAwesomeIcon icon={faEye} />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

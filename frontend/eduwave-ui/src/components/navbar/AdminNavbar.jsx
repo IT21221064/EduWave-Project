@@ -16,17 +16,21 @@ function Navbar() {
     <div className="navbar-container">
       <nav className="navbar">
         <Link to="/" className="navbar-brand">
-          <img className="nav-logo" src="/images/EYELogo.png" alt="Logo" />
+          <img className="nav-logo" src="/images/eduwavelogo.png" alt="Logo" />
         </Link>
         <ul className="nav">
+          <link
+            href="https://fonts.googleapis.com/css2?family=Alice&display=swap"
+            rel="stylesheet"
+          ></link>
           <li className="nav-item">
-            <Link to="/newcourse" className="navtext">
-              New Courses
+            <Link to="/enroll" className="navtext">
+              Approvals
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/course-admin" className="navtext">
-              Courses
+            <Link to="/payments" className="navtext">
+              Payments
             </Link>
           </li>
           <li className="nav-item">
@@ -38,7 +42,7 @@ function Navbar() {
                 handleClick();
               }}
             >
-              <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+              <FontAwesomeIcon icon={faSignOutAlt} /> LOGOUT
             </Link>
           </li>
         </ul>
