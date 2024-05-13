@@ -12,6 +12,7 @@ import md5 from "crypto-js/md5";
 import "./Checkout.css"; // Import CSS file
 
 const Checkout = () => {
+  const [payId, setpayId] = useState();
   const [id, setId] = useState(null); // Define id state variable
   const location = useLocation(); // Use useLocation hook to access location object
   const courseId = location.state ? location.state.courseId : null;
@@ -38,6 +39,9 @@ const Checkout = () => {
       fetchData();
     }
   }, []);
+  useEffect(() => {
+    generateUniqueId();
+  }, []);
 
   const [customerAttributes, setCustomerAttributes] = useState({
     first_name: "",
@@ -46,20 +50,39 @@ const Checkout = () => {
     email: "",
     address: "",
     city: "",
-    country: "Sri lanka", // Default country
+    country: "", // Default country
   });
 
-  const generateUniqueOrderId = () => {
-    const timestamp = new Date().getTime().toString();
-    const uniqueId = Math.random().toString(36).substr(2, 9); // Random alphanumeric string
-    return `${timestamp}:${uniqueId}`;
-  };
+  // const generateUniqueOrderId = () => {
+  //   const timestamp = new Date().getTime().toString();
+  //   const uniqueId = Math.random().toString(36).substr(2, 9); // Random alphanumeric string
+  //   return `${timestamp}:${uniqueId}`;
+  // };
+  const generateUniqueId = async () => {
+    try {
+      // Fetch existing IDs from the database
+      const response = await axios.get("http://localhost:5006/api/payment/");
+      const existingIds = response.data.data.map(
+        (payment) => payment.paymentID
+      );
 
+      // Generate a random 4-digit number for the ID
+      let newId;
+      do {
+        newId = Math.floor(1000 + Math.random() * 9000).toString();
+      } while (existingIds.includes(newId)); // Repeat until a unique ID is generated
+
+      setpayId(newId);
+    } catch (error) {
+      console.error("Error generating unique ID:", error);
+    }
+  };
   const [checkoutAttributes, setCheckoutAttributes] = useState({
-    returnUrl: "http://sample.com/return",
-    cancelUrl: "http://sample.com/cancel",
-    notifyUrl: "http://localhost:5006/api/payment/notify",
-    order_id: generateUniqueOrderId(),
+    returnUrl: "http://localhost:3000/notify",
+    cancelUrl: "http://localhost:3000/notify",
+    notifyUrl: "http://localhost:3000/notify",
+    order_id: payId,
+    //order_id: "OR12345678",
     items: "Door bell wireless",
     courseID: "",
     currency: "LKR",
@@ -110,7 +133,7 @@ const Checkout = () => {
     }));
   }, [
     checkoutAttributes.merchant_id,
-    checkoutAttributes.order_id,
+    (checkoutAttributes.order_id = payId),
     checkoutAttributes.amount,
     checkoutAttributes.currency,
     checkoutAttributes.merchant_secret,
@@ -131,7 +154,7 @@ const Checkout = () => {
   const addPayment = async () => {
     try {
       await axios.post("http://localhost:5006/api/payment/add", {
-        paymentID: checkoutAttributes.order_id,
+        paymentID: payId,
         userID: id, // Use the id state variable here
         amount: checkoutAttributes.amount,
         currency: checkoutAttributes.currency,
@@ -152,11 +175,12 @@ const Checkout = () => {
 
   return (
     <div className="container">
+      <h2>Payment</h2>
       <div className="row">
         <div className="col-md-8">
           <div className="payment-form-card">
             <div className="card-body">
-              <p>Selected Course ID: {courseId}</p>
+              <p hidden>Selected Course ID: {courseId}</p>
               <h5 className="card-title">Customer Details</h5>
               <form
                 method="post"
@@ -303,7 +327,9 @@ const Checkout = () => {
                   name="hash"
                   value={checkoutAttributes.hash}
                 />
-                <button type="submit">Buy Now</button>
+                <button type="submit" className="btn btn-primary">
+                  Buy Now
+                </button>
               </form>
             </div>
           </div>

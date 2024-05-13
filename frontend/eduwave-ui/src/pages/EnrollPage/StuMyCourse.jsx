@@ -104,11 +104,13 @@ const StuMyCourse = () => {
           {courses.map((course) => (
             <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
               <div className="stucourse-card">
-                <img
-                  src={course.file.secure_url}
-                  alt={course.name}
-                  className="student-course-image"
-                />
+                <div className="card">
+                  <img
+                    src={course.file.secure_url}
+                    alt={course.name}
+                    className="stucourse-image  "
+                  />
+                </div>
                 <div className="stucourse-details">
                   <h3 className="student-course-name">{course.name}</h3>
                   <p className="student-course-description">

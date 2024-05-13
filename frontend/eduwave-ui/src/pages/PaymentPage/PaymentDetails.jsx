@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "./PaymentDetails.css";
 
 const PaymentDetails = () => {
   const { id } = useParams();
@@ -29,10 +30,13 @@ const PaymentDetails = () => {
   }
 
   return (
-    <div className="container">
-      <h1 className="text-center my-4">Payment Details</h1>
+    <div className="main-detail-card">
+      <h2 className="text-center my-4 ">Payment Details</h2>
       <div className="row">
-        <div className="col-md-6">
+        <div
+          className="col-md-6"
+          style={{ maxWidth: "500px", marginLeft: "150px" }}
+        >
           <div className="card mb-3">
             <div className="card-body">
               <div style={{ textAlign: "center" }}>
@@ -64,12 +68,11 @@ const PaymentDetails = () => {
           </div>
         </div>
         <div className="col-md-6">
-          <div className="card">
+          <div className="card" style={{ maxWidth: "500px" }}>
             <div className="card-body">
               <div style={{ textAlign: "center" }}>
                 <h5 className="card-title">Payment Information</h5>
               </div>
-
               <p className="card-text">
                 <strong>Payment Method:</strong> {payment.paymentMethod}
               </p>
@@ -82,7 +85,6 @@ const PaymentDetails = () => {
               <p className="card-text">
                 <strong>Created At:</strong> {payment.createdAt}
               </p>
-
               <p className="card-text">
                 <strong>Updated At:</strong> {payment.updatedAt}
               </p>

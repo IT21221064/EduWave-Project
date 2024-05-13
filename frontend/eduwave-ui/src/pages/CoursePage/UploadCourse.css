@@ -1,9 +1,10 @@
 .course-upload-container {
     display: flex;
     justify-content: space-between;
-    padding: 20px; /* Add margin as needed */
+    padding: 50px; /* Add margin as needed */
   }
-  
+
+
   .course-upload-form {
     width: 48%; /* Adjusted width */
     padding: 40px;
@@ -40,6 +41,8 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    animation: fadeIn 0.5s ease; /* Apply fadeIn animation */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Add transition effect */
   }
   
   .course-form-group textarea {
@@ -63,3 +66,21 @@
     font-size: 0.8rem;
     margin-top: 0.5rem;
   }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .course-form-group input:hover,
+.course-form-group textarea:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+  border-color: #243d57; /* Change border color on hover */
+}
+  
