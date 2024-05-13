@@ -1,0 +1,34 @@
+.suc-container {
+  text-align: center;
+  margin: 100px auto;
+  margin-top: 50px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  align-items: center;
+}
+
+.such1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #034a1d;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #145707;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #01a51f;
+}

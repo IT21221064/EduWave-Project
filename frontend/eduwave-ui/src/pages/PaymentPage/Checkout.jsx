@@ -50,7 +50,7 @@ const Checkout = () => {
     email: "",
     address: "",
     city: "",
-    country: "Sri lanka", // Default country
+    country: "", // Default country
   });
 
   // const generateUniqueOrderId = () => {
@@ -175,11 +175,12 @@ const Checkout = () => {
 
   return (
     <div className="container">
+      <h2>Payment</h2>
       <div className="row">
         <div className="col-md-8">
           <div className="payment-form-card">
             <div className="card-body">
-              <p>Selected Course ID: {courseId}</p>
+              <p hidden>Selected Course ID: {courseId}</p>
               <h5 className="card-title">Customer Details</h5>
               <form
                 method="post"
@@ -326,7 +327,9 @@ const Checkout = () => {
                   name="hash"
                   value={checkoutAttributes.hash}
                 />
-                <button type="submit">Buy Now</button>
+                <button type="submit" className="btn btn-primary">
+                  Buy Now
+                </button>
               </form>
             </div>
           </div>
