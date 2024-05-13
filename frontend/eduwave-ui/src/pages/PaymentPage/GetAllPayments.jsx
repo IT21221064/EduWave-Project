@@ -65,7 +65,7 @@ const GetAllPayments = () => {
           />
         </div>
         <div className="admin-payment-list-card">
-          <table className="admin-payment-list-table">
+          <table className="cadmin-table">
             <thead>
               <tr>
                 <th>Order ID</th>

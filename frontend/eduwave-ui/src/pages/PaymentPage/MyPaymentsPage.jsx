@@ -52,8 +52,8 @@ const MyPaymentsPage = () => {
   return (
     <>
       <Navbar />
-      <div className="admin-payment-list-container">
-        <div className="admin-payment-list-main-card">
+      <div className="">
+        <div className="">
           <div className="search-bar-container ">
             <input
               type="text"
@@ -71,7 +71,7 @@ const MyPaymentsPage = () => {
           </div>
 
           <div className="admin-payment-list-card">
-            <table className="admin-payment-list-table">
+            <table className="cadmin-table">
               <thead>
                 <tr>
                   <th>Order ID</th>
