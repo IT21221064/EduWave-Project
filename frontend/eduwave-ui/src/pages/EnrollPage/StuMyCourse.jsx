@@ -121,6 +121,8 @@ const StuMyCourse = () => {
                     Video Link:{" "}
                     <a href={course.videolink}>{course.videolink}</a>
                   </p>
+                  <button className="btn btn-primary">Un-Enroll</button>
+                  <br />
                   <input
                     type="checkbox"
                     onChange={() => handleCheckboxChange(course)}
