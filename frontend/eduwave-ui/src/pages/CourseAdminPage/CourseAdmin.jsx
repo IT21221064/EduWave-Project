@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./CourseAdmin.css"; // Import CSS file
 import Navbar from "../../components/navbar/AdminNavbar";
+import Footer from "../../components/footer/Footer";
 
 const CourseAdmin = () => {
   const [courses, setCourses] = useState([]);
@@ -113,6 +114,7 @@ const CourseAdmin = () => {
           </table>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

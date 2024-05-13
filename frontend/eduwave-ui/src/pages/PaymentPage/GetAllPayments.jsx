@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import "./GetAllPayments.css";
 import Navbar from "../../components/navbar/AdminNavbar";
+import Footer from "../../components/footer/Footer";
 
 const GetAllPayments = () => {
   const [payments, setPayments] = useState([]);
@@ -109,6 +110,7 @@ const GetAllPayments = () => {
             </tbody>
           </table>
         </div>
+        <Footer />
       </div>
     </>
   );
