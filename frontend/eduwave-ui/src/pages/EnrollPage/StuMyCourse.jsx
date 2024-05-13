@@ -98,7 +98,6 @@ const StuMyCourse = () => {
     <div className="wholepage-mycourse">
       <Navbar />
       <div className="student-stu-my-course">
-        <h2 className="student-course-heading">My Courses</h2>
         <h5>Progress: {progress.toFixed(2)}%</h5>
         <div className="row">
           {courses.map((course) => (
