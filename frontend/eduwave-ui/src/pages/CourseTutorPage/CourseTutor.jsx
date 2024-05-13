@@ -4,6 +4,8 @@ import axios from "axios";
 import CourseUpdatePopup from "../../components/Course/CourseUpdatePopup"; // Import the popup/modal component
 import "./CourseTutor.css"; // Import CSS file for styling
 import Navbar from "./../../components/navbar/TNavbar";
+import Footer from "../../components/footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const CourseTutor = () => {
   const [courses, setCourses] = useState([]);
@@ -11,6 +13,7 @@ const CourseTutor = () => {
   const [showPopup, setShowPopup] = useState(false); // State to manage the visibility of the popup/modal
   const tutorUsername = localStorage.getItem("username");
 
+  const navigate = useNavigate();
   useEffect(() => {
     // Fetch course data from the API
     const fetchCourses = async () => {
@@ -57,11 +60,21 @@ const CourseTutor = () => {
       console.error("Error deleting course:", error);
     }
   };
+  const handleAdd = () => {
+    navigate("/course-upload");
+  };
 
   return (
     <div>
       <Navbar />
-      <h1>My Courses</h1>
+      <br />
+      <button
+        className="btn btn-primary"
+        onClick={handleAdd}
+        style={{ marginLeft: "30px" }}
+      >
+        + Course
+      </button>
       <div className="ctutor-course-container">
         {filteredCourses.map((course) => (
           <div key={course._id} className="ctutor-course-card">
@@ -76,8 +89,8 @@ const CourseTutor = () => {
               <p>Price: ${course.price}</p>
               <br></br>
               <div className="ctutor-course-buttons">
-                <button onClick={() => handleUpdate(course._id)}>Update</button>
-                <button onClick={() => handleDelete(course._id)}>Delete</button>
+                <button className="tutorupdatec" onClick={() => handleUpdate(course._id)}>Update</button>
+                <button className="tutordeletec" onClick={() => handleDelete(course._id)}>Delete</button>
               </div>
             </div>
           </div>
@@ -99,6 +112,7 @@ const CourseTutor = () => {
           />
         )}
       </div>
+      <Footer />
     </div>
   );
 };

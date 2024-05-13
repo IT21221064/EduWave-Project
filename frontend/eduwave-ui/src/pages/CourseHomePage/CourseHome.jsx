@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./CourseHome.css"; // Import CSS file for styling
+import Footer from "../../components/footer/Footer";
 
 const CourseHome = () => {
   const [courses, setCourses] = useState([]);
@@ -103,6 +104,7 @@ const CourseHome = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

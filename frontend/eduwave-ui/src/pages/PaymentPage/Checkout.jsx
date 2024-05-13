@@ -11,6 +11,7 @@ import {
 import md5 from "crypto-js/md5";
 import "./Checkout.css"; // Import CSS file
 import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const Checkout = () => {
   const [payId, setpayId] = useState();
@@ -363,6 +364,7 @@ const Checkout = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

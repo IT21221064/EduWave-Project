@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./PaymentSuccessPage.css";
 import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const PaymentSuccessDetails = () => {
   const location = useLocation();
@@ -35,11 +36,13 @@ const PaymentSuccessDetails = () => {
 
   const handleEnrollButtonClick = async () => {
     try {
+      const state = "in-complete";
       const userid = localStorage.getItem("userid");
       console.log(studentEmail);
       axios.post("http://localhost:5005/enroll", {
         userid,
         course,
+        state,
       });
 
       const emailResponse = await axios.post(
@@ -52,6 +55,7 @@ const PaymentSuccessDetails = () => {
 
       console.log(emailResponse.data.message);
       alert("Enrollment successful!");
+      navigate("/mystucourse");
     } catch (error) {
       console.error("Error enrolling course:", error);
       alert("Already enlisted in this course!");
@@ -71,6 +75,7 @@ const PaymentSuccessDetails = () => {
         </h1>
         <button onClick={handleEnrollButtonClick}>Enroll</button>
       </div>
+      <Footer />
     </>
   );
 };

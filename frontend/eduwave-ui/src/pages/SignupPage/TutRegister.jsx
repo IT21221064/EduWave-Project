@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignupPage.css";
 import { Link } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -106,6 +107,7 @@ const SignupPage = () => {
           </Link>
         </form>
       </div>
+      <Footer />
     </div>
   );
 };
