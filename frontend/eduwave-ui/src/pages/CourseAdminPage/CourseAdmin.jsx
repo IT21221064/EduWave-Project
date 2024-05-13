@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./CourseAdmin.css"; // Import CSS file
+import Navbar from "../../components/navbar/AdminNavbar";
 
 const CourseAdmin = () => {
   const [courses, setCourses] = useState([]);
@@ -61,56 +62,58 @@ const CourseAdmin = () => {
   };
 
   return (
-    <div className="cadmin-container">
-      <h2 className="cadmin-heading">Admin Page</h2>
-      <div className="cadmin-cardView">
-        <table className="cadmin-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Owner</th>
-              <th>Image</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((course) => (
-              <tr key={course._id}>
-                <td>{course.id}</td>
-                <td>{course.name}</td>
-                <td>{course.description}</td>
-                <td>${course.price}</td>
-                <td>{course.owner}</td>
-                <td>
-                  <img src={course.file.secure_url} alt={course.name} />
-                </td>
-                <td>
-                  {!course.isavailable && (
-                    <>
-                      <button
-                        className="cadmin-accept-btn"
-                        onClick={() => handleAccept(course._id, course.name)}
-                      >
-                        Accept
-                      </button>
-                      <button
-                        className="cadmin-reject-btn"
-                        onClick={() => handleReject(course._id)}
-                      >
-                        Reject
-                      </button>
-                    </>
-                  )}
-                </td>
+    <>
+      <Navbar />
+      <div className="cadmin-container">
+        <div className="cadmin-cardView">
+          <table className="cadmin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Owner</th>
+                <th>Image</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {courses.map((course) => (
+                <tr key={course._id}>
+                  <td>{course.id}</td>
+                  <td>{course.name}</td>
+                  <td>{course.description}</td>
+                  <td>${course.price}</td>
+                  <td>{course.owner}</td>
+                  <td>
+                    <img src={course.file.secure_url} alt={course.name} />
+                  </td>
+                  <td>
+                    {!course.isavailable && (
+                      <>
+                        <button
+                          className="cadmin-accept-btn"
+                          onClick={() => handleAccept(course._id, course.name)}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          className="cadmin-reject-btn"
+                          onClick={() => handleReject(course._id)}
+                        >
+                          Reject
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

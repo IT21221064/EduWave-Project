@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MyNotificationsPage.css";
+import Navbar from "../../components/navbar/TNavbar";
 
 const MyNotificationsPage = () => {
   const [notifications, setNotifications] = useState([]);
@@ -51,17 +52,20 @@ const MyNotificationsPage = () => {
   }, [userName, userId]); // Add userId as dependency
 
   return (
-    <div className="container">
-      <h2>My Notifications</h2>
-      <ul>
-        {filteredNotifications.map((notification) => (
-          <li key={notification._id} className="notification">
-            <h3>{notification.title}</h3>
-            <p>{notification.description}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <h2>My Notifications</h2>
+        <ul>
+          {filteredNotifications.map((notification) => (
+            <li key={notification._id} className="notification">
+              <h3>{notification.title}</h3>
+              <p>{notification.description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 
