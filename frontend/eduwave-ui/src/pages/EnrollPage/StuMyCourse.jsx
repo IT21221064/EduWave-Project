@@ -99,40 +99,42 @@ const StuMyCourse = () => {
       <Navbar />
       <div className="student-stu-my-course">
         <div className="container">
-        <h5>Progress: {progress.toFixed(2)}%</h5>
-        <div className="row">
-          {courses.map((course) => (
-            <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
-              <div className="stucourse-card">
-                <div className="card">
-                  <img
-                    src={course.file.secure_url}
-                    alt={course.name}
-                    className="stucourse-image  "
-                  />
-                </div>
-                <div className="stucourse-details">
-                  <h3 className="student-course-name">{course.name}</h3>
-                  <p className="student-course-description">
-                    Description: {course.description}
-                  </p>
-                  <p className="student-course-price">Price: ${course.price}</p>
-                  <p className="student-course-owner">Owner: {course.owner}</p>
-                  <div>
-                  <p className="student-course-video-link">
-                    Video Link:{" "}
-                    <a href={course.videolink}>{course.videolink}</a>
-                  </p>
+          <h5>Progress: {progress.toFixed(2)}%</h5>
+          <div className="row">
+            {courses.map((course) => (
+              <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
+                <div className="stucourse-card">
+                  <div className="card">
+                    <img
+                      src={course.file.secure_url}
+                      alt={course.name}
+                      className="stucourse-image  "
+                    />
                   </div>
-                  <button className="btn btn-primary">Un-Enroll</button>
-                  <br />
-                  <input
-                    type="checkbox"
-                    onChange={() => handleCheckboxChange(course)}
-                    disabled={course.status === "completed"}
-                    className="course-checkbox"
-                  />
-
+                  <div className="stucourse-details">
+                    <h3 className="student-course-name">{course.name}</h3>
+                    <p className="student-course-description">
+                      Description: {course.description}
+                    </p>
+                    <p className="student-course-price">
+                      Price: ${course.price}
+                    </p>
+                    <p className="student-course-owner">
+                      Owner: {course.owner}
+                    </p>
+                    <p className="student-course-video-link">
+                      Video Link:{" "}
+                      <a href={course.videolink}>{course.videolink}</a>
+                    </p>
+                    <button className="btn btn-primary">Un-Enroll</button>
+                    <br />
+                    <input
+                      type="checkbox"
+                      onChange={() => handleCheckboxChange(course)}
+                      disabled={course.status === "completed"}
+                      className="course-checkbox"
+                    />
+                  </div>
                 </div>
               </div>
             ))}
