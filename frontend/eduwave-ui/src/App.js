@@ -25,6 +25,7 @@ import AdminPaymentDetails from "./pages/PaymentPage/AdminPaymentDetails";
 import CourseTutor from "./pages/CourseTutorPage/CourseTutor";
 
 import WelcomePage from "./pages/SignupPage/WelcomePage";
+import HomeAdmin from "./pages/CourseAdminPage/AdminHome";
 
 import MyNotificationsPage from "./pages/NotificationPage/MyNotificationsPage";
 
@@ -56,6 +57,9 @@ function App() {
         <Route path="/course-home" element={<CourseHome />} /> --
         <Route path="/course-admin" element={<CourseAdmin />} />
         <Route path="/course-tutor" element={<CourseTutor />} />
+
+        <Route path="/admin-home" element={<HomeAdmin />} />
+
         <Route path="/mystucourse" element={<StuMyCourse />} /> --
         <Route path="/my-notifications" element={<MyNotificationsPage />} />
       </Routes>
