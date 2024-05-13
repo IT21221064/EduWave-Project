@@ -119,10 +119,12 @@ const StuMyCourse = () => {
                   </p>
                   <p className="student-course-price">Price: ${course.price}</p>
                   <p className="student-course-owner">Owner: {course.owner}</p>
+                  <div>
                   <p className="student-course-video-link">
                     Video Link:{" "}
                     <a href={course.videolink}>{course.videolink}</a>
                   </p>
+                  </div>
                   <button className="btn btn-primary">Un-Enroll</button>
                   <br />
                   <input

@@ -32,9 +32,9 @@ const EnrollPage = () => {
 
     // Sort courses based on price
     const sortedCourses = [...courses].sort((a, b) => {
-      if (sortByPrice === "highest") {
+      if (sortByPrice === "highest"){
         return b.price - a.price;
-      } else {
+      }else{
         return a.price - b.price;
       }
     });
@@ -63,53 +63,53 @@ const EnrollPage = () => {
     <div>
       <Navbar />
       <div className="container">
-      <div className="search-bar-container mt-4">
-        <input
-          type="text"
-          className="form-control search-form-control "
-          placeholder="Search by course name"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        <select
-          value={sortByPrice}
-          onChange={(e) => setSortByPrice(e.target.value)}
-          className="form-select"
-        >
-          <option value="highest">Highest Price</option>
-          <option value="lowest">Lowest Price</option>
-        </select>
-      </div>
-      <div className="row">
-        {filteredCourses.map((course) => (
-          <div
-            key={course._id}
-            className="col-lg-4 col-md-6 col-sm-12"
+        <div className="search-bar-container mt-4">
+          <input
+            type="text"
+            className="form-control search-form-control "
+            placeholder="Search by course name"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <select
+            value={sortByPrice}
+            onChange={(e) => setSortByPrice(e.target.value)}
+            className="form-select"
           >
-            <div className="stucourse-card">
-            <div className="card">
-              <img
-                src={course.file.secure_url}
-                alt={course.name}
-                className="stucourse-image  "
-              />
+            <option value="highest">Highest Price</option>
+            <option value="lowest">Lowest Price</option>
+          </select>
+        </div>
+        <div className="row">
+          {filteredCourses.map((course) => (
+            <div
+              key={course._id}
+              className="col-lg-4 col-md-6 col-sm-12"
+            >
+              <div className="stucourse-card">
+              <div className="card">
+                <img
+                  src={course.file.secure_url}
+                  alt={course.name}
+                  className="stucourse-image  "
+                />
+              </div>
+              <div className="stucourse-details">
+                <h3 className="stucourse-title">{course.name}</h3>
+                <p className="stucourse-description">{course.description}</p>
+                <p className="stucourse-price">Price: ${course.price}</p>
+                <p className="stucourse-owner">Owner: {course.owner}</p>
+                <button
+                  className="stuenrollbutton"
+                  onClick={() => handleEnroll(course._id)}
+                >
+                  Enroll Now
+                </button>
+              </div>
+              </div>
             </div>
-            <div className="stucourse-details">
-              <h3 className="stucourse-title">{course.name}</h3>
-              <p className="stucourse-description">{course.description}</p>
-              <p className="stucourse-price">Price: ${course.price}</p>
-              <p className="stucourse-owner">Owner: {course.owner}</p>
-              <button
-                className="stuenrollbutton"
-                onClick={() => handleEnroll(course._id)}
-              >
-                Enroll Now
-              </button>
-            </div>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </div>
   );
