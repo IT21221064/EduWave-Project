@@ -52,6 +52,7 @@ const PaymentSuccessDetails = () => {
 
       console.log(emailResponse.data.message);
       alert("Enrollment successful!");
+      navigate("/mystucourse");
     } catch (error) {
       console.error("Error enrolling course:", error);
       alert("Already enlisted in this course!");

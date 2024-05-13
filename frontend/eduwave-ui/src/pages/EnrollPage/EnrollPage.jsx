@@ -62,7 +62,7 @@ const EnrollPage = () => {
   return (
     <div>
       <Navbar />
-
+      <div className="container">
       <div className="search-bar-container mt-4">
         <input
           type="text"
@@ -84,8 +84,9 @@ const EnrollPage = () => {
         {filteredCourses.map((course) => (
           <div
             key={course._id}
-            className="col-lg-4 col-md-6 col-sm-12 stucourse-card"
+            className="col-lg-4 col-md-6 col-sm-12"
           >
+            <div className="stucourse-card">
             <div className="card">
               <img
                 src={course.file.secure_url}
@@ -99,14 +100,16 @@ const EnrollPage = () => {
               <p className="stucourse-price">Price: ${course.price}</p>
               <p className="stucourse-owner">Owner: {course.owner}</p>
               <button
-                className="stuenroll-button btn btn-primary"
+                className="stuenrollbutton"
                 onClick={() => handleEnroll(course._id)}
               >
                 Enroll Now
               </button>
             </div>
+            </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
