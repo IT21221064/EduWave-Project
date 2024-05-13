@@ -18,7 +18,8 @@ const EnrollPage = () => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get("http://localhost:5002/api/course");
-        setCourses(response.data); // Update courses state with the fetched data
+        const availableCourses = response.data.filter(course => course.isavailable);
+        setCourses(availableCourses); 
       } catch (error) {
         console.error("Error fetching courses:", error);
       }

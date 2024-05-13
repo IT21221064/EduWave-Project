@@ -64,7 +64,7 @@ const CourseHome = () => {
   return (
     <div>
       <Navbar />
-
+      <div className="container">
       <div className="search-bar-container mt-4">
         <input
           type="text"
@@ -103,6 +103,7 @@ const CourseHome = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
       <Footer />
     </div>
