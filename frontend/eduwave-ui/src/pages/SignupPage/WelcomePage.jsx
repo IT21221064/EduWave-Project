@@ -10,9 +10,10 @@ const WelcomePage = () => {
         <div className='signupbackground'>
         <div className='login-container'>
             <h2>Welcome to Eduwave</h2>
-            <p>Click on the button below to register as a student or teacher</p>
-            <Link to="/sregister" className='welcomebtn'>Register as a Student</Link>
-            <Link to="/tregister" className='welcomebtn'>Register as a Teacher</Link>
+            <p>AMONG THE TIDES</p>
+            <Link to="/login" ><button className='admin-btn'>Admin</button></Link>
+            <Link to="/tlogin" ><button className='tutor-btn'>Tutor</button></Link>
+            <Link to="/slogin" ><button className='learner-btn'>Learner</button></Link>
         </div>
         </div>
     );
