@@ -98,17 +98,19 @@ const StuMyCourse = () => {
     <div className="wholepage-mycourse">
       <Navbar />
       <div className="student-stu-my-course">
-        <h2 className="student-course-heading">My Courses</h2>
+        <div className="container">
         <h5>Progress: {progress.toFixed(2)}%</h5>
         <div className="row">
           {courses.map((course) => (
             <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
               <div className="stucourse-card">
-                <img
-                  src={course.file.secure_url}
-                  alt={course.name}
-                  className="student-course-image"
-                />
+                <div className="card">
+                  <img
+                    src={course.file.secure_url}
+                    alt={course.name}
+                    className="stucourse-image  "
+                  />
+                </div>
                 <div className="stucourse-details">
                   <h3 className="student-course-name">{course.name}</h3>
                   <p className="student-course-description">
@@ -116,20 +118,25 @@ const StuMyCourse = () => {
                   </p>
                   <p className="student-course-price">Price: ${course.price}</p>
                   <p className="student-course-owner">Owner: {course.owner}</p>
+                  <div>
                   <p className="student-course-video-link">
                     Video Link:{" "}
                     <a href={course.videolink}>{course.videolink}</a>
                   </p>
+                  </div>
+                  <button className="btn btn-primary">Un-Enroll</button>
+                  <br />
                   <input
                     type="checkbox"
                     onChange={() => handleCheckboxChange(course)}
                     disabled={course.status === "completed"}
                     className="course-checkbox"
                   />
+
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
       <Footer />

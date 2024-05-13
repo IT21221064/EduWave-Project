@@ -1,0 +1,68 @@
+.admin-btn{
+    font-size: 17px;
+    border: none;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-btn:hover{
+    color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+.tutor-btn{
+    font-size: 17px;
+    border: none;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.tutor-btn:hover{
+    color: black;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.learner-btn{
+    font-size: 17px;
+    border: none;
+    width: 100%;
+    padding: 5px 8px;
+    border-radius: 15px;
+    margin-top: 10px;
+    background-color: rgb(68, 68, 68);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.learner-btn:hover{
+    color: black;
+    background-color: rgb(255, 255, 255);
+
+}
+
+  
+.login-container {
+    color: azure;
+    max-width: 400px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    text-align: center;
+  }
+  
+

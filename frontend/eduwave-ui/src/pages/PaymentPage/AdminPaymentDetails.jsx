@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./PaymentDetails.css";
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar/AdminNavbar";
 import Footer from "../../components/footer/Footer";
 
-const PaymentDetails = () => {
+const AdminPaymentDetails = () => {
   const { id } = useParams();
   const [payment, setPayment] = useState();
   const [loading, setLoading] = useState(true);
@@ -96,10 +95,10 @@ const PaymentDetails = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };
 
-export default PaymentDetails;
+export default AdminPaymentDetails;

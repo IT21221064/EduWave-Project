@@ -1,18 +1,26 @@
 /* GetAllPayments.css */
 
 /* Custom styles */
+.stucourse-container {
+  margin-top: 10px !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.search-form-control {
+  max-width: 200px; /* Adjust the width as needed */
+}
+
 .admin-payment-list-container {
   margin-bottom: 20px;
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .admin-payment-list-card {
   box-shadow: 0 8px 8px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-
   background-color: #ffffff; /* White background */
   width: 90%;
   margin-left: 70px;
@@ -23,7 +31,6 @@
 
   background-color: #ffffff; /* White background */
   width: 100%;
-
   margin-bottom: 60px;
 }
 
@@ -98,4 +105,24 @@
 
 .dot-pending {
   background-color: orange;
+}
+.cadmin-table {
+  width: 100%; /* Adjusted width */
+  margin: 0 auto; /* Center align the table */
+  border-collapse: collapse;
+  border-radius: 20px;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.cadmin-table th,
+.cadmin-table td {
+  padding: 12px; /* Add padding for better spacing */
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.cadmin-table th {
+  background-color: #000000;
+  text-align: center;
+  color: #ddd;
 }
