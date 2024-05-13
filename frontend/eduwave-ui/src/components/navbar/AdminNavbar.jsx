@@ -24,7 +24,7 @@ function Navbar() {
             rel="stylesheet"
           ></link>
           <li className="nav-item">
-            <Link to="/enroll" className="navtext">
+            <Link to="/course-admin" className="navtext">
               Approvals
             </Link>
           </li>

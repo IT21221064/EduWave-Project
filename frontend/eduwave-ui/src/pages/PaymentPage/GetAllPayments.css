@@ -106,3 +106,23 @@
 .dot-pending {
   background-color: orange;
 }
+.cadmin-table {
+  width: 100%; /* Adjusted width */
+  margin: 0 auto; /* Center align the table */
+  border-collapse: collapse;
+  border-radius: 20px;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.cadmin-table th,
+.cadmin-table td {
+  padding: 12px; /* Add padding for better spacing */
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.cadmin-table th {
+  background-color: #000000;
+  text-align: center;
+  color: #ddd;
+}
