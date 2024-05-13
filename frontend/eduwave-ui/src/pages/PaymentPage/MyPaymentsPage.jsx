@@ -5,6 +5,7 @@ import "./GetAllPayments.css"; // Import CSS file
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const MyPaymentsPage = () => {
   const [payments, setPayments] = useState([]);
@@ -117,6 +118,7 @@ const MyPaymentsPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

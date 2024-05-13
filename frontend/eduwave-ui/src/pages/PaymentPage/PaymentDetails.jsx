@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./PaymentDetails.css";
 import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 const PaymentDetails = () => {
   const { id } = useParams();
@@ -96,6 +97,7 @@ const PaymentDetails = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

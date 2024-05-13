@@ -99,7 +99,6 @@ const StuMyCourse = () => {
       <Navbar />
       <div className="student-stu-my-course">
         <div className="container">
-        <h2 className="student-course-heading">My Courses</h2>
         <h5>Progress: {progress.toFixed(2)}%</h5>
         <div className="row">
           {courses.map((course) => (
@@ -133,11 +132,11 @@ const StuMyCourse = () => {
                     disabled={course.status === "completed"}
                     className="course-checkbox"
                   />
+
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
         </div>
       </div>
       <Footer />

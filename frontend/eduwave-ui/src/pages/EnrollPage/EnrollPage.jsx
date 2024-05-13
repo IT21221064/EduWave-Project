@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./EnrollPage.css";
+import Footer from "../../components/footer/Footer";
 
 const EnrollPage = () => {
   const [courses, setCourses] = useState([]);
@@ -112,6 +113,7 @@ const EnrollPage = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
