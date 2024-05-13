@@ -7,6 +7,7 @@ import "./Navbar.css";
 function Navbar() {
   const navigate = useNavigate();
   const handleClick = () => {
+    localStorage.clear();
     navigate("/");
     console.log("logout");
   };
@@ -18,7 +19,10 @@ function Navbar() {
           <img className="nav-logo" src="/images/eduwavelogo.png" alt="Logo" />
         </Link>
         <ul className="nav">
-        <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet"></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Alice&display=swap"
+            rel="stylesheet"
+          ></link>
           <li className="nav-item">
             <Link to="/enroll" className="navtext">
               ENROLL
