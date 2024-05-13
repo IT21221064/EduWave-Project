@@ -37,14 +37,42 @@
     margin-bottom: 5px;
   }
   
-  .ctutor-course-buttons button {
-    margin-left: 10px;
+  .tutorupdatec {
+    margin-left: 15px;
     padding: 8px 16px;
-    border: none;
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    background-color: #202098;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    font-family: "Alice", serif;
     color: white;
+    font-size: 15px;
   }
+
+  .tutorupdatec:hover{
+    border: 1px solid #000000;
+    color: rgb(255, 255, 255);
+    background-color: rgb(106, 106, 106);
+  }
+
+  .tutordeletec{
+    margin-left: 15px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    background-color: rgb(195, 0, 0);
+    border: 1px solid #c50000;
+    font-family: "Alice", serif;
+    color: white;
+    font-size: 15px;
+  }
+
+  .tutordeletec:hover{
+    border: 1px solid #c10000;
+    color: rgb(255, 255, 255);
+    background-color: rgb(130, 0, 0);
+  }
+
   

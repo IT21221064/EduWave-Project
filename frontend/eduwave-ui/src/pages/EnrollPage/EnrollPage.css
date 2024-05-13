@@ -40,19 +40,22 @@
 }
 
 .stuenrollbutton{
-  background-color: rgb(68, 68, 68);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
+  border: 1px solid #000000;
+  font-family: "Alice", serif;
+  background-color: rgb(0, 0, 0);
   color: white;
-  border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 8px 16px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .stuenrollbutton:hover {
   border: 1px solid #000000;
-  color: black;
-  background-color: rgb(215, 215, 215);
+  color: rgb(255, 255, 255);
+  background-color: rgb(106, 106, 106);
 }
 .search-bar-container {
   margin-top: 10px;
