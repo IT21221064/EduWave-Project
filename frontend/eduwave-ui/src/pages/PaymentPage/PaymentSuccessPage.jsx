@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
+import "./PaymentSuccessPage.css";
+import Navbar from "../../components/navbar/Navbar";
 
 const PaymentSuccessDetails = () => {
   const location = useLocation();
@@ -61,12 +63,15 @@ const PaymentSuccessDetails = () => {
   }
 
   return (
-    <div className="container">
-      <h1 className="text-center my-4">
-        Payment Success : You have successfully enrolled to the course
-      </h1>
-      <button onClick={handleEnrollButtonClick}>Enroll</button>
-    </div>
+    <>
+      <Navbar />
+      <div className="suc-container">
+        <h1 className="text-center my-4 such1">
+          Payment Success: You have successfully enrolled in the course
+        </h1>
+        <button onClick={handleEnrollButtonClick}>Enroll</button>
+      </div>
+    </>
   );
 };
 

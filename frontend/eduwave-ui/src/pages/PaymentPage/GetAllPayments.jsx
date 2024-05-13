@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon
-import { faEye } from "@fortawesome/free-solid-svg-icons"; // Import the eye icon
-import "./GetAllPayments.css"; // Import CSS file
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import "./GetAllPayments.css";
+import Navbar from "../../components/navbar/AdminNavbar";
 
 const GetAllPayments = () => {
   const [payments, setPayments] = useState([]);
+  const [searchOrderId, setSearchOrderId] = useState("");
+  const [filterDate, setFilterDate] = useState("");
 
   useEffect(() => {
     axios
@@ -19,13 +22,50 @@ const GetAllPayments = () => {
       });
   }, []);
 
+  const handleSearch = () => {
+    // Filter payments by Order ID
+    return payments.filter((payment) =>
+      payment.paymentID.toLowerCase().includes(searchOrderId.toLowerCase())
+    );
+  };
+
+  const handleFilter = () => {
+    // Filter payments by Date
+    return payments.filter((payment) => {
+      const paymentDate = new Date(payment.timestamp).toLocaleDateString();
+      // Check if the filtered date matches the payment date
+      return paymentDate === new Date(filterDate).toLocaleDateString();
+    });
+  };
+
+  const filteredPayments =
+    searchOrderId !== ""
+      ? handleSearch()
+      : filterDate !== ""
+      ? handleFilter()
+      : payments;
+
   return (
-    <div className="admin-payment-list-container">
-      <div className="admin-payment-list-main-card">
-        <h1>Admin Payments Page</h1>
-        <br />
+    <>
+      <Navbar />
+      <div className="">
+        <div className="search-bar-container ">
+          <input
+            type="text"
+            className="form-control search-form-control "
+            placeholder="Search by Order ID"
+            value={searchOrderId}
+            onChange={(e) => setSearchOrderId(e.target.value)}
+          />
+          <input
+            type="date"
+            value={filterDate}
+            onChange={(e) => setFilterDate(e.target.value)}
+            className="form-control search-form-control"
+          />
+        </div>
         <div className="admin-payment-list-card">
-          <table className="admin-payment-list-table">
+          <table className="cadmin-table">
             <thead>
               <tr>
                 <th>Order ID</th>
@@ -36,7 +76,7 @@ const GetAllPayments = () => {
               </tr>
             </thead>
             <tbody>
-              {payments.map((payment) => (
+              {filteredPayments.map((payment) => (
                 <tr key={payment._id}>
                   <td>{payment.paymentID}</td>
                   <td>{new Date(payment.timestamp).toLocaleDateString()}</td>
@@ -58,7 +98,7 @@ const GetAllPayments = () => {
                   </td>
                   <td>
                     <Link
-                      to={`/payment-details/${payment._id}`}
+                      to={`/admin-payment-details/${payment._id}`}
                       className="view-link"
                     >
                       <FontAwesomeIcon icon={faEye} />
@@ -70,7 +110,7 @@ const GetAllPayments = () => {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

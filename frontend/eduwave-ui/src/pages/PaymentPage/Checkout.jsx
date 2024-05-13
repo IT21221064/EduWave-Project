@@ -10,6 +10,7 @@ import {
 } from "@payhere-js-sdk/client";
 import md5 from "crypto-js/md5";
 import "./Checkout.css"; // Import CSS file
+import Navbar from "../../components/navbar/Navbar";
 
 const Checkout = () => {
   const [payId, setpayId] = useState();
@@ -50,7 +51,7 @@ const Checkout = () => {
     email: "",
     address: "",
     city: "",
-    country: "Sri lanka", // Default country
+    country: "", // Default country
   });
 
   // const generateUniqueOrderId = () => {
@@ -174,190 +175,196 @@ const Checkout = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-8">
-          <div className="payment-form-card">
-            <div className="card-body">
-              <p>Selected Course ID: {courseId}</p>
-              <h5 className="card-title">Customer Details</h5>
-              <form
-                method="post"
-                action="https://sandbox.payhere.lk/pay/checkout"
-                onSubmit={(e) => {
-                  // Prevent default form submission behavior
-                  addPayment(); // Call addPayment function when the form is submitted
-                }}
-              >
-                <input
-                  type="hidden"
-                  name="merchant_id"
-                  value={checkoutAttributes.merchant_id}
-                />
-                <input
-                  type="hidden"
-                  name="return_url"
-                  value={checkoutAttributes.returnUrl}
-                />
-                <input
-                  type="hidden"
-                  name="cancel_url"
-                  value={checkoutAttributes.cancelUrl}
-                />
-                <input
-                  type="hidden"
-                  name="notify_url"
-                  value={checkoutAttributes.notifyUrl}
-                />
-                <input
-                  type="hidden"
-                  name="order_id"
-                  value={checkoutAttributes.order_id}
-                />
-                <input
-                  type="hidden"
-                  name="items"
-                  value={checkoutAttributes.items}
-                />
-                <input
-                  type="hidden"
-                  name="currency"
-                  value={checkoutAttributes.currency}
-                />
-                <input
-                  type="hidden"
-                  name="amount"
-                  value={checkoutAttributes.amount}
-                />
-                <div className="form-group">
-                  <label>
-                    First Name: <span className="text-danger">*</span>
-                  </label>
+    <>
+      <Navbar />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="payment-form-card">
+              <div className="card-body">
+                <p hidden>Selected Course ID: {courseId}</p>
+                <h5 className="card-title">Customer Details</h5>
+                <form
+                  method="post"
+                  action="https://sandbox.payhere.lk/pay/checkout"
+                  onSubmit={(e) => {
+                    // Prevent default form submission behavior
+                    addPayment(); // Call addPayment function when the form is submitted
+                  }}
+                >
                   <input
-                    type="text"
-                    name="first_name"
-                    value={customerAttributes.first_name}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    required
+                    type="hidden"
+                    name="merchant_id"
+                    value={checkoutAttributes.merchant_id}
                   />
-                </div>
-                <div className="form-group">
-                  <label>
-                    Last Name: <span className="text-danger">*</span>
-                  </label>
                   <input
-                    type="text"
-                    name="last_name"
-                    value={customerAttributes.last_name}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    required
+                    type="hidden"
+                    name="return_url"
+                    value={checkoutAttributes.returnUrl}
                   />
-                </div>
-                <div className="form-group">
-                  <label>
-                    Email: <span className="text-danger">*</span>
-                  </label>
                   <input
-                    type="text"
-                    name="email"
-                    value={customerAttributes.email}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    required
+                    type="hidden"
+                    name="cancel_url"
+                    value={checkoutAttributes.cancelUrl}
                   />
-                </div>
-                <div className="form-group">
-                  <label>
-                    Phone: <span className="text-danger">*</span>
-                  </label>
                   <input
-                    type="text"
-                    name="phone"
-                    value={customerAttributes.phone}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    required
+                    type="hidden"
+                    name="notify_url"
+                    value={checkoutAttributes.notifyUrl}
                   />
-                </div>
-                <div className="form-group">
-                  <label>
-                    Country: <span className="text-danger">*</span>
-                  </label>
                   <input
-                    type="text"
-                    name="country"
-                    value={customerAttributes.country}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    required
+                    type="hidden"
+                    name="order_id"
+                    value={checkoutAttributes.order_id}
                   />
-                </div>
+                  <input
+                    type="hidden"
+                    name="items"
+                    value={checkoutAttributes.items}
+                  />
+                  <input
+                    type="hidden"
+                    name="currency"
+                    value={checkoutAttributes.currency}
+                  />
+                  <input
+                    type="hidden"
+                    name="amount"
+                    value={checkoutAttributes.amount}
+                  />
+                  <div className="form-group">
+                    <label>
+                      First Name: <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="first_name"
+                      value={customerAttributes.first_name}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>
+                      Last Name: <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="last_name"
+                      value={customerAttributes.last_name}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>
+                      Email: <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="email"
+                      value={customerAttributes.email}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>
+                      Phone: <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="phone"
+                      value={customerAttributes.phone}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>
+                      Country: <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="country"
+                      value={customerAttributes.country}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label>
-                    Address: <span className="text-danger">*</span>
-                  </label>
+                  <div className="form-group">
+                    <label>
+                      Address: <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="address"
+                      value={customerAttributes.address}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>
+                      City: <span className="text-danger">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="city"
+                      value={customerAttributes.city}
+                      onChange={handleInputChange}
+                      className="form-control"
+                      required
+                    />
+                  </div>
                   <input
-                    type="text"
-                    name="address"
-                    value={customerAttributes.address}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    required
+                    type="hidden"
+                    name="hash"
+                    value={checkoutAttributes.hash}
                   />
-                </div>
-                <div className="form-group">
-                  <label>
-                    City: <span className="text-danger">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="city"
-                    value={customerAttributes.city}
-                    onChange={handleInputChange}
-                    className="form-control"
-                    required
-                  />
-                </div>
-                <input
-                  type="hidden"
-                  name="hash"
-                  value={checkoutAttributes.hash}
-                />
-                <button type="submit">Buy Now</button>
-              </form>
+                  <button type="submit" className="btn btn-primary">
+                    Buy Now
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-4">
-          <div className="payment-details-card">
-            <div className="card-body">
-              <h5 className="card-title">Payment Details</h5>
-              <table className="table">
-                <tbody>
-                  <tr>
-                    <td>Order Id</td>
-                    <td>{checkoutAttributes.order_id}</td>
-                  </tr>
-                  <tr>
-                    <td>Course name</td>
-                    <td>{checkoutAttributes.items}</td>
-                  </tr>
-                  <tr>
-                    <td>Price</td>
-                    <td>
-                      {checkoutAttributes.amount} {checkoutAttributes.currency}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div className="col-md-4">
+            <div className="payment-details-card">
+              <div className="card-body">
+                <h5 className="card-title">Payment Details</h5>
+                <table className="table">
+                  <tbody>
+                    <tr>
+                      <td>Order Id</td>
+                      <td>{checkoutAttributes.order_id}</td>
+                    </tr>
+                    <tr>
+                      <td>Course name</td>
+                      <td>{checkoutAttributes.items}</td>
+                    </tr>
+                    <tr>
+                      <td>Price</td>
+                      <td>
+                        {checkoutAttributes.amount}{" "}
+                        {checkoutAttributes.currency}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

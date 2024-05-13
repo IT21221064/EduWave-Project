@@ -98,17 +98,18 @@ const StuMyCourse = () => {
     <div className="wholepage-mycourse">
       <Navbar />
       <div className="student-stu-my-course">
-        <h2 className="student-course-heading">My Courses</h2>
         <h5>Progress: {progress.toFixed(2)}%</h5>
         <div className="row">
           {courses.map((course) => (
             <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
               <div className="stucourse-card">
-                <img
-                  src={course.file.secure_url}
-                  alt={course.name}
-                  className="student-course-image"
-                />
+                <div className="card">
+                  <img
+                    src={course.file.secure_url}
+                    alt={course.name}
+                    className="stucourse-image  "
+                  />
+                </div>
                 <div className="stucourse-details">
                   <h3 className="student-course-name">{course.name}</h3>
                   <p className="student-course-description">
