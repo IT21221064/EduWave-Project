@@ -76,8 +76,8 @@ const CourseTutor = () => {
               <p>Price: ${course.price}</p>
               <br></br>
               <div className="ctutor-course-buttons">
-                <button onClick={() => handleUpdate(course._id)}>Update</button>
-                <button onClick={() => handleDelete(course._id)}>Delete</button>
+                <button className="tutorupdatec" onClick={() => handleUpdate(course._id)}>Update</button>
+                <button className="tutordeletec" onClick={() => handleDelete(course._id)}>Delete</button>
               </div>
             </div>
           </div>
