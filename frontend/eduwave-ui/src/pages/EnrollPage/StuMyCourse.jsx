@@ -99,7 +99,7 @@ const StuMyCourse = () => {
   <Navbar />
   <div className="student-stu-my-course">
     <div className="container">
-      <h5>Progress: {progress.toFixed(2)}%</h5>
+      <h5 className="progress-heading">My Course Completion: {progress.toFixed(0)}%</h5>
       <div className="row">
         {courses.map((course) => (
           <div key={course.id} className="col-lg-4 col-md-6 col-sm-12">
