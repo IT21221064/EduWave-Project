@@ -4,6 +4,7 @@ import axios from "axios";
 import "./CourseAdmin.css"; // Import CSS file
 import Navbar from "../../components/navbar/AdminNavbar";
 import Footer from "../../components/footer/Footer";
+import swal from "sweetalert"; 
 
 const CourseAdmin = () => {
   const [courses, setCourses] = useState([]);
@@ -24,24 +25,31 @@ const CourseAdmin = () => {
 
   const handleAccept = async (id, name) => {
     try {
-      // Update the course's isavailable to true
-      await axios.put(`http://localhost:5002/api/course/${id}`, {
-        isavailable: true,
+      const willAccept = await swal({
+        title: "Are you sure?",
+        text: `Do you want to accept? `,
+        icon: "info",
+        buttons: ["Cancel", "Accept"],
+        dangerMode: false,
       });
-      // After updating, fetch courses again to update the table
-      const response = await axios.get("http://localhost:5002/api/course");
-      console.log(name);
-      const description = `${name} has been accepted.`; // Include course name in description
-      const title = "Accepted";
-      console.log(description);
-      setCourses(response.data.filter((course) => !course.isavailable));
-      const userId = response.data.find((course) => course._id === id)?.owner;
-      console.log(userId);
-      await axios.post(`http://localhost:5003/api/Notification/`, {
-        userId,
-        title,
-        description,
-      });
+
+      if (willAccept) {
+        // Update the course's isavailable to true
+        await axios.put(`http://localhost:5002/api/course/${id}`, {
+          isavailable: true,
+        });
+        // After updating, fetch courses again to update the table
+        const response = await axios.get("http://localhost:5002/api/course");
+        const description = `${name} has been accepted.`; // Include course name in description
+        const title = "Accepted";
+        setCourses(response.data.filter((course) => !course.isavailable));
+        const userId = response.data.find((course) => course._id === id)?.owner;
+        await axios.post(`http://localhost:5003/api/Notification/`, {
+          userId,
+          title,
+          description,
+        });
+      }
     } catch (error) {
       console.error("Error accepting course:", error);
       if (error.response) {
@@ -50,13 +58,23 @@ const CourseAdmin = () => {
     }
   };
 
-  const handleReject = async (id) => {
+  const handleReject = async (id, name) => {
     try {
-      // Delete the course
-      await axios.delete(`http://localhost:5002/api/course/${id}`);
-      // After deleting, fetch courses again to update the table
-      const response = await axios.get("http://localhost:5002/api/course");
-      setCourses(response.data.filter((course) => !course.isavailable));
+      const willReject = await swal({
+        title: "Are you sure?",
+        text: `Do you want to reject? This cannot be undone`,
+        icon: "warning",
+        buttons: ["Cancel", "Reject"],
+        dangerMode: true,
+      });
+
+      if (willReject) {
+        // Delete the course
+        await axios.delete(`http://localhost:5002/api/course/${id}`);
+        // After deleting, fetch courses again to update the table
+        const response = await axios.get("http://localhost:5002/api/course");
+        setCourses(response.data.filter((course) => !course.isavailable));
+      }
     } catch (error) {
       console.error("Error rejecting course:", error);
     }

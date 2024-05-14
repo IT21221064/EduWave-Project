@@ -33,6 +33,7 @@ const PaymentDetails = () => {
 
   return (
     <>
+    <div>
       <Navbar />
       <div className="main-detail-card">
         <h2 className="text-center my-4 ">Payment Details</h2>
@@ -97,7 +98,9 @@ const PaymentDetails = () => {
           </div>
         </div>
       </div>
-      <Footer />
+    
+      </div>
+        <Footer />
     </>
   );
 };

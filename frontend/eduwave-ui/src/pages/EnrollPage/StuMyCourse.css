@@ -76,3 +76,37 @@
   object-fit: cover; /* Ensure the image covers the entire container */
   border-radius: 5px;
 }
+
+.stuunenroll{
+  margin-top: 15px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    background-color: rgb(195, 0, 0);
+    border: 1px solid #c50000;
+    font-family: "Alice", serif;
+    color: white;
+    font-size: 15px;
+}
+
+.stuunenroll:hover{
+  border: 1px solid #c10000;
+  color: rgb(255, 255, 255);
+  background-color: rgb(130, 0, 0);
+}
+
+.student-course-status-container {
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.student-course-status{
+  font-family: "Alice", serif;
+  margin-bottom: 0px;
+}
+.course-checkboxxx{
+  margin-top: 3px;
+  margin-left: 10px;
+}
