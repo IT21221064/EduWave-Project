@@ -107,7 +107,7 @@ const SignupPage = () => {
           </Link>
         </form>
       </div>
-      <Footer />
+  
     </div>
   );
 };

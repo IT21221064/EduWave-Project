@@ -107,7 +107,7 @@ const StuRegister = () => {
           </Link>
         </form>
       </div>
-      <Footer />
+ 
     </div>
   );
 };
