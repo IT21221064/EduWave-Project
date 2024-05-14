@@ -8,6 +8,7 @@ import Footer from "../../components/footer/Footer";
 const PaymentDetails = () => {
   const { id } = useParams();
   const [payment, setPayment] = useState();
+  const [courseName, setCourseName] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,6 +24,19 @@ const PaymentDetails = () => {
       });
   }, [id]);
 
+  useEffect(() => {
+    if (payment) {
+      axios
+        .get(`http://localhost:5002/api/course/${payment.courseID}`)
+        .then((response) => {
+          setCourseName(response.data.name);
+        })
+        .catch((error) => {
+          console.error("Error fetching course details:", error);
+        });
+    }
+  }, [payment]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -33,7 +47,6 @@ const PaymentDetails = () => {
 
   return (
     <>
-    <div>
       <Navbar />
       <div className="main-detail-card">
         <h2 className="text-center my-4 ">Payment Details</h2>
@@ -82,7 +95,7 @@ const PaymentDetails = () => {
                   <strong>Payment Method:</strong> {payment.paymentMethod}
                 </p>
                 <p className="card-text">
-                  <strong>Course ID:</strong> {payment.courseID}
+                  <strong>Course Name:</strong> {courseName}
                 </p>
                 <p className="card-text">
                   <strong>Price:</strong> {payment.amount} {payment.currency}
@@ -98,9 +111,7 @@ const PaymentDetails = () => {
           </div>
         </div>
       </div>
-    
-      </div>
-        <Footer />
+      <Footer />
     </>
   );
 };
