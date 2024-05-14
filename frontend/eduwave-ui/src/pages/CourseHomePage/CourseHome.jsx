@@ -86,7 +86,7 @@ const CourseHome = () => {
         {filteredCourses.map((course) => (
           <div
             key={course._id}
-            className="col-lg-4 col-md-6 col-sm-12 stucourse-card"
+            className="col-lg-4 col-md-6 col-sm-12 cstucourse-card"
           >
             <div className="card">
               <img
@@ -95,11 +95,11 @@ const CourseHome = () => {
                 className="stucourse-image  "
               />
             </div>
-            <div className="stucourse-details">
-              <h3 className="stucourse-title">{course.name}</h3>
-              <p className="stucourse-description">{course.description}</p>
-              <p className="stucourse-price">Price: ${course.price}</p>
-              <p className="stucourse-owner">Owner: {course.owner}</p>
+            <div className="cstucourse-details">
+              <h3 className="cstucourse-title">{course.name}</h3>
+              <p className="cstucourse-description">{course.description}</p>
+              <p className="cstucourse-price">Price: ${course.price}</p>
+              <p className="cstucourse-owner">Owner: {course.owner}</p>
             </div>
           </div>
         ))}

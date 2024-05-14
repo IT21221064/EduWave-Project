@@ -6,6 +6,7 @@ import "./CourseTutor.css"; // Import CSS file for styling
 import Navbar from "./../../components/navbar/TNavbar";
 import Footer from "../../components/footer/Footer";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert"; 
 
 const CourseTutor = () => {
   const [courses, setCourses] = useState([]);
@@ -48,14 +49,23 @@ const CourseTutor = () => {
       console.error("Error updating course:", error);
     }
   };
-
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, name) => {
     try {
-      // Delete the course
-      await axios.delete(`http://localhost:5002/api/course/${id}`);
-      // After deleting, fetch courses again to update the list
-      const response = await axios.get("http://localhost:5002/api/course");
-      setCourses(response.data);
+      const willDelete = await swal({
+        title: "Are you sure?",
+        text: `Do you want to delete ${name}?`,
+        icon: "warning",
+        buttons: ["Cancel", "Delete"],
+        dangerMode: true,
+      });
+
+      if (willDelete) {
+        // Delete the course
+        await axios.delete(`http://localhost:5002/api/course/${id}`);
+        // After deleting, fetch courses again to update the list
+        const response = await axios.get("http://localhost:5002/api/course");
+        setCourses(response.data);
+      }
     } catch (error) {
       console.error("Error deleting course:", error);
     }
@@ -90,7 +100,10 @@ const CourseTutor = () => {
               <br></br>
               <div className="ctutor-course-buttons">
                 <button className="tutorupdatec" onClick={() => handleUpdate(course._id)}>Update</button>
-                <button className="tutordeletec" onClick={() => handleDelete(course._id)}>Delete</button>
+                <button className="tutordeletec" onClick={() => handleDelete(course._id, course.name)}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>

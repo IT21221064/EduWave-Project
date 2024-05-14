@@ -3,6 +3,7 @@ import axios from "axios";
 import "./UploadCourse.css"; // Import CSS file
 import Navbar from "../../components/navbar/TNavbar";
 import Footer from "../../components/footer/Footer";
+import swal from "sweetalert";
 
 const UploadCourse = () => {
   const [id, setId] = useState("");
@@ -112,6 +113,7 @@ const UploadCourse = () => {
 
         // Generate a new unique ID for the next course
         generateUniqueId();
+        swal("Success!", "Course uploaded successfully!", "success");
       } catch (error) {
         console.error("Error adding course:", error);
         // Handle error state
