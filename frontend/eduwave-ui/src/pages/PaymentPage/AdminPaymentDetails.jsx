@@ -8,7 +8,19 @@ const AdminPaymentDetails = () => {
   const { id } = useParams();
   const [payment, setPayment] = useState();
   const [loading, setLoading] = useState(true);
-
+  const [courseName, setCourseName] = useState("");
+  useEffect(() => {
+    if (payment) {
+      axios
+        .get(`http://localhost:5002/api/course/${payment.courseID}`)
+        .then((response) => {
+          setCourseName(response.data.name);
+        })
+        .catch((error) => {
+          console.error("Error fetching course details:", error);
+        });
+    }
+  }, [payment]);
   useEffect(() => {
     axios
       .get(`http://localhost:5006/api/payment/${id}`)
@@ -80,7 +92,7 @@ const AdminPaymentDetails = () => {
                   <strong>Payment Method:</strong> {payment.paymentMethod}
                 </p>
                 <p className="card-text">
-                  <strong>Course ID:</strong> {payment.courseID}
+                  <strong>Course Name:</strong> {courseName}
                 </p>
                 <p className="card-text">
                   <strong>Price:</strong> {payment.amount} {payment.currency}
@@ -95,7 +107,6 @@ const AdminPaymentDetails = () => {
             </div>
           </div>
         </div>
-      
       </div>
       <Footer />
     </>

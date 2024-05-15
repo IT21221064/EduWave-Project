@@ -6,6 +6,23 @@
   /* Add styles for the section containing student course content */
 }
 
+.progress-heading {
+  animation: fadeIn 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 .student-course-heading {
   text-align: center;
   font-family: "Poppins", sans-serif !important;
@@ -107,6 +124,6 @@
   margin-bottom: 0px;
 }
 .course-checkboxxx{
-  margin-top: 3px;
+  margin-top: 1px;
   margin-left: 10px;
 }
